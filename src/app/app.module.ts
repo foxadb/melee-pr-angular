@@ -5,15 +5,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
-import { PlayerService } from './services/player.service';
-
 import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { PlayerComponent } from './player/player.component';
+
+import { PlayerService } from './services/player.service';
+import { MatchService } from './services/match.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RankingComponent
+    RankingComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { RankingComponent } from './ranking/ranking.component';
     MatInputModule
   ],
   providers: [
-    PlayerService
+    PlayerService,
+    MatchService
   ],
   bootstrap: [AppComponent]
 })

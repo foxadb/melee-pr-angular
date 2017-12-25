@@ -1,4 +1,4 @@
-import Player from '../models/player.model';
+import Match from '../models/match.model';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
@@ -7,24 +7,24 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PlayerService {
+export class MatchService {
 
   api_url = 'http://localhost:3000';
-  playerUrl = `${this.api_url}/api/player`;
+  matchUrl = `${this.api_url}/api/match`;
 
   constructor(private http: HttpClient) { }
 
-  // GET Players from API
-  getPlayers(): Observable<Array<Player>> {
-    return this.http.get(this.playerUrl).map(res => {
-      return res["data"].docs as Array<Player>;
+  // GET Matches from API
+  getMatches(): Observable<Array<Match>> {
+    return this.http.get(this.matchUrl).map(res => {
+      return res["data"].docs as Array<Match>;
     });
   }
 
-  // GET a Player from API by ID
-  getPlayer(id: string): Observable<Player> {
-    return this.http.get(`${this.playerUrl}/${id}`).map(res => {
-      return res["data"] as Player;
+  // GET a Match from API by ID
+  getMatch(id: string): Observable<Match> {
+    return this.http.get(`${this.matchUrl}/${id}`).map(res => {
+      return res["data"] as Match;
     });
   }
 

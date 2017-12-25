@@ -15,7 +15,7 @@ import { PlayerService } from '../services/player.service';
 })
 export class RankingComponent implements OnInit {
 
-  players: Player[] = [];
+  players: Array<Player> = [];
   filteredPlayers: Observable<Player[]>;
   playersCtrl: FormControl = new FormControl();
 
@@ -33,7 +33,7 @@ export class RankingComponent implements OnInit {
     );
   }
 
-  filter(val: string): Player[] {
+  filter(val: string): Array<Player> {
     return this.players.filter(player =>
       player.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }

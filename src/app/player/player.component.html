@@ -1,0 +1,40 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Main(s)</th>
+        <th>Location</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ player.name }}</td>
+        <td>
+          <div class="stock" *ngFor="let character of player.mains">
+            <img src="assets/stock_icons/{{ character }}.png" />
+          </div>
+        </td>
+        <td>{{ player.location }}</td>
+        <td>{{ player.score }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Opponent</th>
+        <th>Main(s)</th>
+        <th>Score</th>
+        <th>Tournament</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of matches">
+        <td>{{ match.player1 }}</td>
+      </tr>
+    </tbody>
+    </table>
+</div>
