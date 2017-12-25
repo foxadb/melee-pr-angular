@@ -8,12 +8,17 @@ class Player {
     score: number;
     matches: Array<string>;
 
-    constructor() {
-        this.name = "";
-        this.mains = [];
-        this.location = "";
-        this.score = 0;
-        this.matches = [];
+    constructor(json: any) {
+        this._id = json._id;
+        this.name = json.name;
+        this.mains = json.mains;
+        this.location = json.location;
+        this.score = json.score;
+        this.matches = json.matches;
+    }
+
+    getScore(): number {
+        return this.score;
     }
 }
 

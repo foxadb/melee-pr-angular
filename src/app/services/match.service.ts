@@ -17,14 +17,18 @@ export class MatchService {
   // GET Matches from API
   getMatches(): Observable<Array<Match>> {
     return this.http.get(this.matchUrl).map(res => {
-      return res["data"].docs as Array<Match>;
+      var matches: Array<Match> = [];
+      res["data"].docs.forEach(match => {
+        matches.push(new Match(match));
+      });
+      return matches;
     });
   }
 
   // GET a Match from API by ID
   getMatch(id: string): Observable<Match> {
     return this.http.get(`${this.matchUrl}/${id}`).map(res => {
-      return res["data"] as Match;
+      return new Match(res["data"]);
     });
   }
 

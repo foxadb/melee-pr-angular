@@ -1,4 +1,6 @@
 <div class="container">
+  <h2>Player stats</h2>
+
   <table class="table">
     <thead>
       <tr>
@@ -10,18 +12,19 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{ player.name }}</td>
+        <td>{{ player?.name }}</td>
         <td>
-          <div class="stock" *ngFor="let character of player.mains">
+          <div class="stock" *ngFor="let character of player?.mains">
             <img src="assets/stock_icons/{{ character }}.png" />
           </div>
         </td>
-        <td>{{ player.location }}</td>
-        <td>{{ player.score }}</td>
+        <td>{{ player?.location }}</td>
+        <td>{{ player?.score }}</td>
       </tr>
     </tbody>
   </table>
-  
+
+  <h2>Match results</h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -33,8 +36,15 @@
     </thead>
     <tbody>
       <tr *ngFor="let match of matches">
-        <td>{{ match.player1 }}</td>
+        <td>{{ match.player2.name }}</td>
+        <td>
+          <div class='stock' *ngFor="let character of match.player2.mains">
+            <img src="assets/stock_icons/{{ character }}.png" />
+          </div>
+        </td>
+        <td>{{ match.score1 }} - {{ match.score2 }}</td>
+        <td>{{ match.tournament.name }}</td>
       </tr>
     </tbody>
-    </table>
+  </table>
 </div>

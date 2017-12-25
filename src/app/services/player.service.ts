@@ -17,14 +17,18 @@ export class PlayerService {
   // GET Players from API
   getPlayers(): Observable<Array<Player>> {
     return this.http.get(this.playerUrl).map(res => {
-      return res["data"].docs as Array<Player>;
+      var players: Array<Player> = [];
+      res["data"].docs.forEach(player => {
+        players.push(new Player(player));
+      });
+      return players;
     });
   }
 
   // GET a Player from API by ID
   getPlayer(id: string): Observable<Player> {
     return this.http.get(`${this.playerUrl}/${id}`).map(res => {
-      return res["data"] as Player;
+      return new Player(res["data"]);
     });
   }
 

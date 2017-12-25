@@ -7,29 +7,29 @@ import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  selector: 'app-player-detail',
+  templateUrl: './player-detail.component.html',
+  styleUrls: ['./player-detail.component.scss']
 })
-export class PlayerComponent implements OnInit {
+export class PlayerDetailComponent implements OnInit {
 
-  player: Player = new Player();
+  player: Player;
   matches: Array<Match> = [];
 
   constructor(private playerService: PlayerService,
     private matchService: MatchService) {
-    this.playerService.getPlayer('5a3e8542bbe03c0523485249').subscribe(player => {
+    this.playerService.getPlayer('5a40da89081df6354a706b91').subscribe(player => {
       this.player = player;
 
       player.matches.forEach(id => {
         this.matchService.getMatch(id).subscribe(match => {
+          match.correctPlayerOrder(player);
           this.matches.push(match);
         })
       });
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

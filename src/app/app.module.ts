@@ -7,7 +7,7 @@ import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
-import { PlayerComponent } from './player/player.component';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
 
 import { PlayerService } from './services/player.service';
 import { MatchService } from './services/match.service';
@@ -16,7 +16,7 @@ import { MatchService } from './services/match.service';
   declarations: [
     AppComponent,
     RankingComponent,
-    PlayerComponent
+    PlayerDetailComponent
   ],
   imports: [
     BrowserModule,
