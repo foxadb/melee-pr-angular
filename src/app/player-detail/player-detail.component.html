@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Player stats</h2>
+  <h1>Player stats</h1>
 
   <table class="table">
     <thead>
@@ -15,7 +15,7 @@
         <td>{{ player?.name }}</td>
         <td>
           <div class="stock" *ngFor="let character of player?.mains">
-            <img src="assets/stock_icons/{{ character }}.png" />
+            <img src="assets/stock_icons/{{ character }}.png">
           </div>
         </td>
         <td>{{ player?.location }}</td>
@@ -25,6 +25,7 @@
   </table>
 
   <h2>Match results</h2>
+
   <table class="table table-striped">
     <thead>
       <tr>

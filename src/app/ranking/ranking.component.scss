@@ -1,9 +1,18 @@
+h1 {
+    padding: 20px;
+    text-align: center;
+}
+
 .player-form {
-    min-width: 150px;
-    max-width: 500px;
+    padding: 20px;
     width: 100%;
-  }
+    text-align: center;
+}
   
 .player-full-width {
-    width: 100%;
+    width: 20%;
+}
+
+.ranking-table tbody tr:hover {
+    background-color: #259ece;
 }

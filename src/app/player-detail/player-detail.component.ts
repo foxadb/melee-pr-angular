@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import Player from '../models/player.model';
 import Match from '../models/match.model';
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
 
@@ -16,9 +19,16 @@ export class PlayerDetailComponent implements OnInit {
   player: Player;
   matches: Array<Match> = [];
 
-  constructor(private playerService: PlayerService,
-    private matchService: MatchService) {
-    this.playerService.getPlayer('5a40da89081df6354a706b91').subscribe(player => {
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private playerService: PlayerService,
+    private matchService: MatchService
+  ) {
+      // get the player id
+      var playerId = this.route.snapshot.paramMap.get('id');
+
+      this.playerService.getPlayer(playerId).subscribe(player => {
       this.player = player;
 
       player.matches.forEach(id => {

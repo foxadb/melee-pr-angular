@@ -1,17 +1,19 @@
 <div class="container">
-
-  <form class="player-form">
+  <h1>French SSBM Power Ranking</h1>
+  
+  <form class="player-form" (ngSubmit)="onSearch()">
     <mat-form-field class="player-full-width">
-      <input type="text" placeholder="Search Player" arial-label="Player" matInput [formControl]="playersCtrl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Search a Player" [(ngModel)]="searchedPlayer" arial-label="Player" matInput [formControl]="searchPlayerCtrl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let player of filteredPlayers | async" [value]="player.name">
           {{ player.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <input type="submit" arial-label="Search" class="btn btn-primary" value="Search">
   </form>
 
-  <table class="table table-striped">
+  <table class="table table-striped ranking-table">
     <thead>
       <tr>
         <th>Name</th>
@@ -21,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let player of players">
+      <tr *ngFor="let player of players" (click)="searchPlayer(player._id)">
         <td>{{ player.name }}</td>
         <td>
           <div class='stock' *ngFor="let character of player.mains">

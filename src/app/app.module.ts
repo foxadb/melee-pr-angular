@@ -11,12 +11,15 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 
 import { PlayerService } from './services/player.service';
 import { MatchService } from './services/match.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RankingComponent,
-    PlayerDetailComponent
+    PlayerDetailComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { MatchService } from './services/match.service';
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule
   ],
   providers: [
     PlayerService,
@@ -33,4 +37,4 @@ import { MatchService } from './services/match.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
