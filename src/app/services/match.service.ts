@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MatchService {
 
-  api_url = 'http://localhost:3000';
-  matchUrl = `${this.api_url}/api/match`;
+  private api_url = 'http://localhost:3000';
+  private matchUrl = `${this.api_url}/api/match`;
 
   constructor(private http: HttpClient) { }
 

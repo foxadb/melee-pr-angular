@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PlayerService {
 
-  api_url = 'http://localhost:3000';
-  playerUrl = `${this.api_url}/api/player`;
+  private api_url = 'http://localhost:3000';
+  private playerUrl = `${this.api_url}/api/player`;
 
   constructor(private http: HttpClient) { }
 
