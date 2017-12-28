@@ -1,10 +1,11 @@
 import Player from '../models/player.model';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PlayerService {
@@ -16,20 +17,24 @@ export class PlayerService {
 
   // GET Players from API
   getPlayers(): Observable<Array<Player>> {
-    return this.http.get(this.playerUrl).map(res => {
+    return this.http.get(this.playerUrl)
+    .map(res => {
       var players: Array<Player> = [];
       res["data"].docs.forEach(player => {
         players.push(new Player(player));
       });
       return players;
-    });
+    })
+    .catch(err => this.handleError(err));
   }
 
   // GET a Player from API by ID
   getPlayer(id: string): Observable<Player> {
-    return this.http.get(`${this.playerUrl}/${id}`).map(res => {
+    return this.http.get(`${this.playerUrl}/${id}`)
+    .map(res => {
       return new Player(res["data"]);
-    });
+    })
+    .catch(err => this.handleError(err));
   }
 
   // Error handling method

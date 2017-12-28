@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-login',
@@ -10,34 +9,44 @@ import { UserService } from '../services/user.service'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
-  loading = false;
-  error = '';
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private userService: UserService
-  ) { }
+  private model: any = {};
+  private loading = false;
+  private error = '';
 
-  ngOnInit() {
+  constructor(private auth: AuthenticationService, private router: Router) { }
+
+  public ngOnInit(): void {
     // reset login status
-    this.authenticationService.logout();
+    this.auth.logout();
   }
 
-  login() {
+  public login(): void {
     this.loading = true;
-    this.authenticationService.login(this.model.username, this.model.password)
-      .subscribe(result => {
+    this.auth.login(this.model.username, this.model.password)
+      .subscribe(
+      result => {
+        // login successful
         if (result === true) {
-          // login successful
-          this.router.navigate(['/']);
+          switch (this.auth.getRole()) {
+            case 'user': {
+              this.router.navigate(['user']);
+              break;
+            }
+
+            case 'admin': {
+              console.log("You are admin. Congratulations!");
+              break;
+            }
+          }
         }
       },
       error => {
         // login failed
-        this.error = "Wrong username or password";
-        this.loading = false;
+        if (error === 'Unauthorized') {
+          this.error = "Wrong username or password";
+          this.loading = false;
+        }
       }
       );
   }

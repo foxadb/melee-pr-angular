@@ -1,19 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) { }
+  private jwtHelper: JwtHelper = new JwtHelper();
 
-  canActivate() {
-    if (localStorage.getItem('currentUser')) {
-      // logged in so return true
-      return true;
-    } else {
-      // not logged in so redirect to login page
-      this.router.navigate(['/login']);
-      return false;
+  constructor(private auth: AuthenticationService, private router: Router) { }
+
+  public canActivate(route: ActivatedRouteSnapshot): boolean {
+    // expected role to access to route
+    const expectedRole = route.data.expectedRole;
+
+    // retrieve the current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (currentUser) {
+      // decode the token payload
+      const tokenPayload = this.jwtHelper.decodeToken(currentUser.token);
+
+      if (this.auth.isAuthenticated() && tokenPayload.role == expectedRole) {
+        return true;
+      }
     }
+
+    // if no authentication, redirect to login page
+    this.router.navigate(['login']);
+    return false;
   }
 }

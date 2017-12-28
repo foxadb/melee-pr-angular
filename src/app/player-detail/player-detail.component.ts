@@ -16,8 +16,8 @@ import { MatchService } from '../services/match.service';
 })
 export class PlayerDetailComponent implements OnInit {
 
-  player: Player;
-  matches: Array<Match> = [];
+  private player: Player;
+  private matches: Array<Match> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +40,6 @@ export class PlayerDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  public ngOnInit(): void { }
 
 }

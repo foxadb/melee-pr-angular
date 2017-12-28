@@ -10,11 +10,11 @@ Super Smash Bros. Melee French Power Ranking webapp front-end designed with [Ang
 
 Clone the back-end and run it
 
-``
+```
 git clone git@github.com:foxadb/fr-melee-pr-express.git
 npm install
 npm start
-``
+```
 
 ### Development server
 

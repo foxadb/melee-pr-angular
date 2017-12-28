@@ -1,24 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { JwtHelper } from 'angular2-jwt';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthenticationService {
 
     private api_url = 'http://localhost:3000';
     private loginUrl = `${this.api_url}/api/user/login`;
+    
+    private jwtHelper: JwtHelper = new JwtHelper();
 
-    public token: string;
+    constructor(private http: Http) {}
 
-    constructor(private http: Http) {
-        // set token if saved in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+    public isAuthenticated(): boolean {
+        // Get the token
+        const token = JSON.parse(localStorage.getItem('currentUser')).token;
+
+        // Check whether the token is expired and return
+        return !this.jwtHelper.isTokenExpired(token);
     }
 
-    login(username: string, password: string): Observable<boolean> {
+    public getToken(): string {
+        return JSON.parse(localStorage.getItem('currentUser')).token;
+    }
+
+    public getRole(): string {
+        // decode token payload
+        const tokenPayload = this.jwtHelper.decodeToken(this.getToken());
+
+        // return role value
+        return tokenPayload.role;
+    }
+
+    public login(username: string, password: string): Observable<boolean> {
         let body = { username: username, password: password };
         return this.http.post(this.loginUrl, body)
             .map((response: Response) => {
@@ -26,9 +45,6 @@ export class AuthenticationService {
                 let token = response.json() && response.json().token;
 
                 if (token) {
-                    // set token property
-                    this.token = token;
-
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
 
@@ -38,12 +54,16 @@ export class AuthenticationService {
                     // return false to indicate failed login
                     return false;
                 }
+            })
+            .catch((error: any) => {
+                if (error.status === 401) {
+                    return Observable.throw('Unauthorized');
+                }
             });
     }
 
-    logout(): void {
+    public logout(): void {
         // clear token remove user from local storage to log user out
-        this.token = null;
         localStorage.removeItem('currentUser');
     }
 }
