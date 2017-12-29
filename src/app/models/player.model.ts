@@ -1,3 +1,5 @@
+import Match from './match.model';
+
 class Player {
 
     _id: string;
@@ -16,8 +18,16 @@ class Player {
         this.matches = json.matches;
     }
 
-    getScore(): number {
+    public getScore(): number {
         return this.score;
+    }
+
+    public equals(player: Player): boolean {
+        return (this._id == player._id);
+    }
+
+    public hasWon(match: Match): boolean {
+        return this.equals(match.winner());
     }
 
 }

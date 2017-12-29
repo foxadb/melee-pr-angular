@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
 import { ManagerMatchComponent } from './manager-match/manager-match.component';
 import { SearchPlayerComponent } from './search-player/search-player.component';
+import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SearchPlayerComponent } from './search-player/search-player.component';
     ContactComponent,
     ManagerComponent,
     ManagerMatchComponent,
-    SearchPlayerComponent
+    SearchPlayerComponent,
+    TournamentDetailComponent
   ],
   imports: [
     BrowserModule,

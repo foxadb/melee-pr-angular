@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="top-buffer">Login</h2>
+  <h1 class="top-buffer">Login</h1>
   <form class="form top-large-buffer" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
       <div class="input-group margin-bottom-sm">

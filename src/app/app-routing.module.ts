@@ -5,6 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { RankingComponent } from './ranking/ranking.component'
 import { PlayerDetailComponent } from './player-detail/player-detail.component'
+import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component'
 import { ContactComponent } from './contact/contact.component'
 import { LoginComponent } from './login/login.component';
 import { ManagerComponent } from './manager/manager.component';
@@ -35,6 +36,9 @@ const routes: Routes = [
 
   // Player stats page
   { path: 'player/:id', component: PlayerDetailComponent },
+
+  // Tournament detail page
+  { path: 'tournament/:id', component: TournamentDetailComponent },
 
   // Contact page
   { path: 'contact', component: ContactComponent },

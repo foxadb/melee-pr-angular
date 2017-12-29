@@ -1,5 +1,6 @@
 .title {
     padding: 20px;
+    font-family: 'Fjalla One', sans-serif;
     font-size: 60px;
     text-align: center;
     text-shadow: 2px 1px 0 hsl(0, 0%, 50%),5px 4px 0 hsla(0, 0%, 0%, 0.15);
@@ -24,7 +25,7 @@
 .players {
     margin: auto;
     list-style-type: none;
-    padding: 0;
+    padding: 50px;
     width: 75%;
 }
 
