@@ -29,12 +29,16 @@ export class AuthenticationService {
         return JSON.parse(localStorage.getItem('currentUser')).token;
     }
 
-    public getRole(): string {
-        // decode token payload
-        const tokenPayload = this.jwtHelper.decodeToken(this.getToken());
+    public getTokenPayload(): any {
+        return this.jwtHelper.decodeToken(this.getToken());
+    }
 
-        // return role value
-        return tokenPayload.role;
+    public getUsername(): string {
+        return this.getTokenPayload().username;
+    }
+
+    public getRole(): string {
+        return this.getTokenPayload().role;
     }
 
     public login(username: string, password: string): Observable<boolean> {

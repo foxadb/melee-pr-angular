@@ -2,6 +2,7 @@ import Player from './player.model';
 import Tournament from './tournament.model';
 
 class Match {
+
     _id: string;
     player1: Player;
     player2: Player;

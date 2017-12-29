@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row justify-content-center top-buffer">
+    <div class="col name">
+      <label for="score1">{{ match?.player1.name }}</label>
+      <div class="stock" *ngFor="let character of match?.player1.mains">
+        <img src="assets/stock_icons/{{ character }}.png" />
+      </div>
+    </div>
+    <div class="col name">
+      <label for="score2">{{ match?.player2.name }}</label>
+      <div class="stock" *ngFor="let character of match?.player2.mains">
+        <img src="assets/stock_icons/{{ character }}.png" />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center top-buffer">
+    <div class="col tournament">
+      {{ match?.tournament.name }}
+    </div>
+  </div>
+  <div class="row justify-content-center top-buffer">
+    <div class="col">
+      <input type="number" class="form-control" id="score1" aria-describedby="scorePlayer1" placeholder="{{ match?.score1 }}" min="-1"
+        name="score1" [(ngModel)]="matchInput.score1" #score1="ngModel">
+      <small id="score1Help" class="form-text text-muted">{{ match?.player1.name }} score was {{ match?.score1 }}</small>
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" id="score2" aria-describedby="scorePlayer2" placeholder="{{ match?.score2 }}" min="-1"
+        name="score2" [(ngModel)]="matchInput.score2" #score2="ngModel">
+      <small id="score2Help" class="form-text text-muted">{{ match?.player2.name }} score was {{ match?.score2 }}</small>
+    </div>
+  </div>
+  <div class="row justify-content-center btn-top-buffer">
+    <input type="submit" arial-label="Cancel" class="btn btn-primary" value="Cancel" (click)="goback()">
+  </div>
+  <div class="row justify-content-center btn-top-buffer">
+    <input type="submit" arial-label="Edit" class="btn btn-success" value="Edit" (click)="edit()">
+  </div>
+  <div class="row justify-content-center btn-top-buffer">
+    <input type="submit" arial-label="Delete" class="btn btn-danger" value="Delete" (click)="delete()">
+  </div>
+  <div *ngIf="matchUpdateError" class="alert alert-danger top-buffer">{{ matchUpdateError }}</div>
+</div>

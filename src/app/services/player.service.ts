@@ -15,8 +15,8 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
-  // GET Players from API
-  getPlayers(): Observable<Array<Player>> {
+  // Get Players from API
+  public getPlayers(): Observable<Array<Player>> {
     return this.http.get(this.playerUrl)
     .map(res => {
       var players: Array<Player> = [];
@@ -28,8 +28,8 @@ export class PlayerService {
     .catch(err => this.handleError(err));
   }
 
-  // GET a Player from API by ID
-  getPlayer(id: string): Observable<Player> {
+  // Get a Player from API by ID
+  public getPlayer(id: string): Observable<Player> {
     return this.http.get(`${this.playerUrl}/${id}`)
     .map(res => {
       return new Player(res["data"]);

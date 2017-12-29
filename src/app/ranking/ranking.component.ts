@@ -68,8 +68,8 @@ export class RankingComponent implements OnInit {
   }
 
   // Search player by id
-  public searchPlayer(playerid: string): void {
-      this.router.navigateByUrl(`/player/${playerid}`);
+  public searchPlayer(playerId: string): void {
+      this.router.navigateByUrl(`/player/${playerId}`);
   }
 
 }

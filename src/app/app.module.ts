@@ -18,9 +18,11 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { PlayerService } from './services/player.service';
 import { MatchService } from './services/match.service';
+import { TournamentService } from './services/tournament.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
+import { UserMatchPanelComponent } from './user-match-panel/user-match-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
     PlayerDetailComponent,
     LoginComponent,
     ContactComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    UserMatchPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
     AuthenticationService,
     UserService,
     PlayerService,
-    MatchService
+    MatchService,
+    TournamentService
   ],
   bootstrap: [AppComponent]
 })

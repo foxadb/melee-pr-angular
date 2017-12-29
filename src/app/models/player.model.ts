@@ -1,6 +1,5 @@
-import Match from './match.model';
-
 class Player {
+
     _id: string;
     name: string;
     mains: Array<string>;
@@ -20,6 +19,7 @@ class Player {
     getScore(): number {
         return this.score;
     }
+
 }
 
 export default Player;
