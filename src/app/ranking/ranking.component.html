@@ -1,6 +1,9 @@
 <div class="container">
-  <h1>French SSBM Power Ranking</h1>
-
+  <div class="title">
+    <i class="fa fa-trophy" aria-hidden="true"></i>
+    French SSBM Power Ranking
+    <i class="fa fa-trophy" aria-hidden="true"></i>
+  </div>
   <form class="player-form" (ngSubmit)="onSearch()">
     <mat-form-field class="player-full-width">
       <input type="text" placeholder="Search a Player" [(ngModel)]="searchedPlayer" arial-label="Player" matInput [formControl]="searchPlayerCtrl"
@@ -11,31 +14,23 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <input type="submit" arial-label="Search" class="btn btn-primary" value="Search">
-    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
+    <button type="submit" class="btn btn-primary" aria-label="Search Player">
+      <i class="fa fa-search fa-lg"></i> Search</button>
+    <i *ngIf="loading" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
   </form>
-
-  <table class="table table-striped ranking-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Main(s)</th>
-        <th>Location</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let player of players" (click)="searchPlayer(player._id)">
-        <td>{{ player.name }}</td>
-        <td>
+  <ul class="players">
+    <li *ngFor="let player of players" (click)="searchPlayer(player._id)">
+      <span class="player-element">
+        <span class="badge">{{ player.score }}</span>
+        <span class="name">{{ player.name }}</span>
+        <span class="mains">
           <div class='stock' *ngFor="let character of player.mains">
             <img src="assets/stock_icons/{{ character }}.png" />
           </div>
-        </td>
-        <td>{{ player.location }}</td>
-        <td>{{ player.score }}</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+        </span>
+        <span class="location">{{ player.location }}</span>
+      </span>
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,13 @@
-h1 {
+.title {
     padding: 20px;
+    font-size: 60px;
     text-align: center;
+    text-shadow: 2px 1px 0 hsl(0, 0%, 50%),5px 4px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+.title i {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .player-form {
@@ -14,6 +21,63 @@ h1 {
     width: 50%;
 }
 
-.ranking-table tbody tr:hover {
-    background-color: #acacac;
+.players {
+    margin: auto;
+    list-style-type: none;
+    padding: 0;
+    width: 75%;
+}
+
+.players li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .5em;
+    height: 3em;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.players li:hover {
+    color: #0078d7;
+    box-shadow: 0 0 5px #0078d7;
+    left: .1em;
+}
+
+.players .text {
+    position: relative;
+    top: -3px;
+}
+
+.players .name {
+    padding: 0 1em 0 1em;
+    font-size: large;
+    font-weight: bold;
+}
+
+.players .mains {
+    position: absolute;
+    left: 40%;
+}
+
+.players .location {
+    float: right;
+    padding: 0.25em 2em 0 0;
+}
+
+.players .badge {
+    display: inline-block;
+    color: white;
+    padding: 1em 2em 0 2em;
+    background-color: #607D8B;
+    background-color: #0078d7;
+    font-size: large;
+    line-height: 0;
+    position: relative;
+    top: -2px;
+    height: 2em;
+    margin-right: 1em;
+    border-radius: 4px 4px 4px 4px;
 }

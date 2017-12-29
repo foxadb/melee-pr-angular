@@ -86,8 +86,8 @@ export class ManagerComponent implements OnInit {
   public newMatch(): any {
     var player1 = this.player;
     var player2 = this.players.find(player => player.name == this.matchInput.opponent);
-    var score1 = (this.matchInput.playerScore >= -1) ? this.matchInput.playerScore : 0;
-    var score2 = (this.matchInput.opponentScore >= -1) ? this.matchInput.opponentScore : 0;
+    var score1 = (this.matchInput.playerScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.playerScore : 0;
+    var score2 = (this.matchInput.opponentScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.opponentScore : 0;
     var tournament = this.tournaments.find(tournament => tournament.name == this.matchInput.tournament);
 
     if (player1 && player2 && tournament) {
