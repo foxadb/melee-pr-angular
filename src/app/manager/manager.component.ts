@@ -16,11 +16,11 @@ import { MatchService } from '../services/match.service';
 import { TournamentService } from '../services/tournament.service';
 
 @Component({
-  selector: 'app-user-panel',
-  templateUrl: './user-panel.component.html',
-  styleUrls: ['./user-panel.component.scss']
+  selector: 'app-manager-panel',
+  templateUrl: './manager.component.html',
+  styleUrls: ['./manager.component.scss']
 })
-export class UserPanelComponent implements OnInit {
+export class ManagerComponent implements OnInit {
 
   // Username logged in
   private username: string;
@@ -86,8 +86,8 @@ export class UserPanelComponent implements OnInit {
   public newMatch(): any {
     var player1 = this.player;
     var player2 = this.players.find(player => player.name == this.matchInput.opponent);
-    var score1 = (this.matchInput.playerScore && this.matchInput.playerScore >= -1) ? this.matchInput.playerScore : undefined;
-    var score2 = (this.matchInput.opponentScore && this.matchInput.opponentScore >= -1) ? this.matchInput.opponentScore : undefined;
+    var score1 = (this.matchInput.playerScore >= -1) ? this.matchInput.playerScore : 0;
+    var score2 = (this.matchInput.opponentScore >= -1) ? this.matchInput.opponentScore : 0;
     var tournament = this.tournaments.find(tournament => tournament.name == this.matchInput.tournament);
 
     if (player1 && player2 && tournament) {
@@ -112,12 +112,12 @@ export class UserPanelComponent implements OnInit {
         .subscribe(res => {
           this.matchCreationSuccess, this.matchCreationError = '';
           if (res) {
-            this.matchCreationSuccess = "Match created successfully";
+            this.matchCreationSuccess = "Match created!";
 
             // refresh the match list
-            this.onSearch();
+            this.onSearch(this.player.name);
           } else {
-            this.matchCreationError= "Error when creating match";
+            this.matchCreationError = "Error when creating match";
           }
         });
     } else {
@@ -132,7 +132,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   // Search player
-  public onSearch(): void {
+  public onSearch(playerName: string): void {
     this.playerNotFoundError = '';
     this.loading = true;
 
@@ -141,7 +141,7 @@ export class UserPanelComponent implements OnInit {
     this.playerMatches = [];
 
     // find the player in the list
-    var player = this.players.find(player => player.name == this.searchedPlayerName);
+    let player = this.players.find(player => player.name == playerName);
 
     if (player) {
       this.playerService.getPlayer(player._id).subscribe(player => {
@@ -166,7 +166,8 @@ export class UserPanelComponent implements OnInit {
 
   // Edit a Match
   public editMatch(matchId: string): void {
-      this.router.navigateByUrl(`/user/match/${matchId}`);
+    const link = ['manager/match', matchId];
+    this.router.navigate(link);
   }
 
 }

@@ -59,7 +59,8 @@ export class RankingComponent implements OnInit {
     this.loading = true;
     var player = this.players.find(player => player.name == this.searchedPlayer);
     if (player) {
-      this.router.navigateByUrl(`/player/${player._id}`);
+      const link = ['player', player._id];
+      this.router.navigate(link);
     } else {
       // player not found
       this.error = "Player not found";
@@ -69,7 +70,8 @@ export class RankingComponent implements OnInit {
 
   // Search player by id
   public searchPlayer(playerId: string): void {
-      this.router.navigateByUrl(`/player/${playerId}`);
+    const link = ['player', playerId];
+    this.router.navigate(link);
   }
 
 }

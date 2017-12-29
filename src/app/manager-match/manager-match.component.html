@@ -31,13 +31,16 @@
     </div>
   </div>
   <div class="row justify-content-center btn-top-buffer">
-    <input type="submit" arial-label="Cancel" class="btn btn-primary" value="Cancel" (click)="goback()">
+    <button arial-label="Cancel" class="btn btn-primary" (click)="goback()">
+      <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
   </div>
   <div class="row justify-content-center btn-top-buffer">
-    <input type="submit" arial-label="Edit" class="btn btn-success" value="Edit" (click)="edit()">
+    <button arial-label="Edit" class="btn btn-success" (click)="edit()">
+      <i class="fa fa-pencil fa-lg"></i> Edit</button>
   </div>
   <div class="row justify-content-center btn-top-buffer">
-    <input type="submit" arial-label="Delete" class="btn btn-danger" value="Delete" (click)="delete()">
+    <button arial-label="Delete" class="btn btn-danger" (click)="delete()">
+      <i class="fa fa-trash-o fa-lg"></i> Delete</button>
   </div>
   <div *ngIf="matchUpdateError" class="alert alert-danger top-buffer">{{ matchUpdateError }}</div>
 </div>

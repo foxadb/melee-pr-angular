@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
         // login successful
         if (result === true) {
           switch (this.auth.getRole()) {
-            case 'user': {
-              this.router.navigate(['user']);
+            case 'manager': {
+              this.router.navigate(['manager']);
               break;
             }
 

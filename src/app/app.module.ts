@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { LoginComponent } from './login/login.component';
-import { UserPanelComponent } from './user-panel/user-panel.component';
+import { ManagerComponent } from './manager/manager.component';
 import { ContactComponent } from './contact/contact.component';
 
 import { AuthGuard } from './guards/auth.guard';
@@ -22,7 +22,7 @@ import { TournamentService } from './services/tournament.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
-import { UserMatchPanelComponent } from './user-match-panel/user-match-panel.component';
+import { ManagerMatchComponent } from './manager-match/manager-match.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import { UserMatchPanelComponent } from './user-match-panel/user-match-panel.com
     PlayerDetailComponent,
     LoginComponent,
     ContactComponent,
-    UserPanelComponent,
-    UserMatchPanelComponent
+    ManagerComponent,
+    ManagerMatchComponent
   ],
   imports: [
     BrowserModule,

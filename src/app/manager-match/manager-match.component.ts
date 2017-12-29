@@ -11,11 +11,11 @@ import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
 
 @Component({
-  selector: 'app-user-match-panel',
-  templateUrl: './user-match-panel.component.html',
-  styleUrls: ['./user-match-panel.component.scss']
+  selector: 'app-manager-match',
+  templateUrl: './manager-match.component.html',
+  styleUrls: ['./manager-match.component.scss']
 })
-export class UserMatchPanelComponent implements OnInit {
+export class ManagerMatchComponent implements OnInit {
 
   private match: Match;
 
@@ -40,15 +40,15 @@ export class UserMatchPanelComponent implements OnInit {
 
   public goback(): void {
     // return to the general user panel
-    this.router.navigate(['user']);
+    this.router.navigate(['manager']);
   }
 
   public edit(): void {
     // create the updated match for PUT request
     var match = {
       _id: this.match._id,
-      score1: (this.matchInput.score1 && this.matchInput.score1 >= -1) ? this.matchInput.score1 : 0,
-      score2: (this.matchInput.score2 && this.matchInput.score2 >= -1) ? this.matchInput.score2 : 0,
+      score1: (this.matchInput.score1 >= -1) ? this.matchInput.score1 : 0,
+      score2: (this.matchInput.score2 >= -1) ? this.matchInput.score2 : 0,
     };
 
     // update the match
@@ -76,6 +76,6 @@ export class UserMatchPanelComponent implements OnInit {
     this.goback();
   }
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
 }

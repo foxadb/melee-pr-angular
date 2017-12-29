@@ -7,8 +7,8 @@ import { RankingComponent } from './ranking/ranking.component'
 import { PlayerDetailComponent } from './player-detail/player-detail.component'
 import { ContactComponent } from './contact/contact.component'
 import { LoginComponent } from './login/login.component';
-import { UserPanelComponent } from './user-panel/user-panel.component';
-import { UserMatchPanelComponent } from './user-match-panel/user-match-panel.component';
+import { ManagerComponent } from './manager/manager.component';
+import { ManagerMatchComponent } from './manager-match/manager-match.component';
 
 const routes: Routes = [
   // Home page (ranking)
@@ -19,18 +19,18 @@ const routes: Routes = [
   
   // General user panel 
   {
-    path: 'user',
-    component: UserPanelComponent,
+    path: 'manager',
+    component: ManagerComponent,
     canActivate: [AuthGuard],
-    data: { expectedRole: 'user' }
+    data: { expectedRole: 'manager' }
   },
 
   // User panel for managing match
   {
-    path: 'user/match/:id',
-    component: UserMatchPanelComponent,
+    path: 'manager/match/:id',
+    component: ManagerMatchComponent,
     canActivate: [AuthGuard],
-    data: { expectedRole: 'user' }
+    data: { expectedRole: 'manager' }
   },
 
   // Player stats page

@@ -1,7 +1,7 @@
-<h1>Hello {{ username }}! Welcome to your user panel</h1>
+<h1>Hello {{ username }}! Welcome to the manager panel</h1>
 
 <div class="container top-buffer">
-  <form class="form" (ngSubmit)="onSearch()">
+  <form class="form" (ngSubmit)="onSearch(searchedPlayerName)">
     <div class="row justify-content-center">
       <div class="col-md-auto">
         <mat-form-field class="player-full-width">
@@ -15,7 +15,8 @@
         </mat-form-field>
       </div>
       <div class="col col-lg-1">
-        <input type="submit" arial-label="Search" class="btn btn-primary" value="Search">
+        <button type="submit" class="btn btn-danger" class="btn btn-primary" aria-label="Search Player">
+          <i class="fa fa-search fa-lg"></i> Search</button>
         <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
       </div>
     </div>
@@ -43,7 +44,8 @@
             required>
         </div>
         <div class="col-sm-1">
-          <input type="submit" arial-label="Match" class="btn btn-primary" value="Add Match">
+          <button type="submit" class="btn btn-primary" arial-label="Add Match">
+            <i class="fa fa-plus"></i> Add Match</button>
         </div>
       </div>
       <div class="row justify-content-center top-buffer">
