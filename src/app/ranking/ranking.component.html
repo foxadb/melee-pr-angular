@@ -4,21 +4,9 @@
     French SSBM Power Ranking
     <i class="fa fa-trophy" aria-hidden="true"></i>
   </div>
-  <form class="player-form" (ngSubmit)="onSearch()">
-    <mat-form-field class="player-full-width">
-      <input type="text" placeholder="Search a Player" [(ngModel)]="searchedPlayer" arial-label="Player" matInput [formControl]="searchPlayerCtrl"
-        [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let player of filteredPlayers | async" [value]="player.name">
-          {{ player.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <button type="submit" class="btn btn-primary" aria-label="Search Player">
-      <i class="fa fa-search fa-lg"></i> Search</button>
-    <i *ngIf="loading" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-  </form>
+
+  <app-search-player></app-search-player>
+
   <ul class="players">
     <li *ngFor="let player of players" (click)="searchPlayer(player._id)">
       <span class="player-element">

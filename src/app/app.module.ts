@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { NgbTypeaheadModule, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -23,6 +24,7 @@ import { TournamentService } from './services/tournament.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
 import { ManagerMatchComponent } from './manager-match/manager-match.component';
+import { SearchPlayerComponent } from './search-player/search-player.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ManagerMatchComponent } from './manager-match/manager-match.component';
     LoginComponent,
     ContactComponent,
     ManagerComponent,
-    ManagerMatchComponent
+    ManagerMatchComponent,
+    SearchPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { ManagerMatchComponent } from './manager-match/manager-match.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
+    NgbTypeaheadModule,
     AppRoutingModule
   ],
   providers: [
@@ -51,7 +55,8 @@ import { ManagerMatchComponent } from './manager-match/manager-match.component';
     UserService,
     PlayerService,
     MatchService,
-    TournamentService
+    TournamentService,
+    NgbTypeaheadConfig
   ],
   bootstrap: [AppComponent]
 })

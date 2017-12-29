@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
@@ -20,18 +17,6 @@ export class RankingComponent implements OnInit {
   // Players list
   private players: Array<Player> = [];
 
-  // Filtered players list for autocompletion
-  private filteredPlayers: Observable<Player[]>;
-
-  // Player research input controller
-  private searchPlayerCtrl: FormControl = new FormControl();
-
-  // Searched player in text input
-  private searchedPlayer: string;
-
-  private loading = false;
-  private error = '';
-
   constructor(
     private router: Router,
     private playerService: PlayerService) {
@@ -41,32 +26,7 @@ export class RankingComponent implements OnInit {
     });
   }
 
-  public ngOnInit(): void {
-    this.filteredPlayers = this.searchPlayerCtrl.valueChanges.pipe(
-      startWith(''),
-      map(val => this.filter(val))
-    )
-  }
-
-  // Filtering the player list by name with the input
-  public filter(val: string): Array<Player> {
-    return this.players.filter(player =>
-      player.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
-  }
-
-  // Search player
-  public onSearch(): void {
-    this.loading = true;
-    var player = this.players.find(player => player.name == this.searchedPlayer);
-    if (player) {
-      const link = ['player', player._id];
-      this.router.navigate(link);
-    } else {
-      // player not found
-      this.error = "Player not found";
-      this.loading = false;
-    }
-  }
+  public ngOnInit(): void {}
 
   // Search player by id
   public searchPlayer(playerId: string): void {

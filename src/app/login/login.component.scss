@@ -4,7 +4,8 @@ h2 {
 }
 
 .container {
-    max-width: 30%;
+    width: 420px;
+    max-width: 80%;
 }
 
 .alert {
@@ -16,5 +17,9 @@ h2 {
 }
 
 .top-buffer {
+    margin-top: 20px;
+}
+
+.top-large-buffer {
     margin-top: 50px;
 }

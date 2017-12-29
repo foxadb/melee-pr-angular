@@ -170,4 +170,18 @@ export class ManagerComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  // Go to home (ranking)
+  public goHome(): void {
+    this.router.navigate(['']);
+  }
+
+  // Log out
+  public logout(): void {
+    // Sign out from the app
+    this.auth.logout();
+
+    // Go back to home
+    this.goHome();
+  }
+
 }

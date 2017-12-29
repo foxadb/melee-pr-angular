@@ -1,0 +1,20 @@
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="'assets/stock_icons/' + r['main'] + '.png'" width="16"> {{ r.name}}
+</ng-template>
+
+<div class="container">
+  <form class="form" (ngSubmit)="searchPlayer(player.name)">
+    <div class="row input-group">
+      <input type="text" class="form-control" placeholder="Enter a Player Name" name="name" [(ngModel)]="player" [ngbTypeahead]="search"
+        [resultTemplate]="rt" [inputFormatter]="formatter">
+      <div class="input-group-btn">
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-search fa-lg"></i> Search</button>
+        <i *ngIf="loading" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  </div>
+</div>

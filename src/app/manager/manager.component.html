@@ -1,10 +1,23 @@
-<h1>Hello {{ username }}! Welcome to the manager panel</h1>
-
 <div class="container top-buffer">
-  <form class="form" (ngSubmit)="onSearch(searchedPlayerName)">
+  <h1>
+    Hello {{ username }}
+    <i class="fa fa-smile-o"></i>
+  </h1>
+  <div class="row top-buffer justify-content-center">
+    <div class="col-4">
+      <button class="btn btn-primary" aria-label="Ranking" (click)="goHome()">
+        <i class="fa fa-outdent fa-lg"></i> Go to Ranking</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-danger" aria-label="Logout" (click)="logout()">
+        <i class="fa fa-sign-out fa-lg"></i> Sign Out</button>
+    </div>
+  </div>
+
+  <form class="form search-player" (ngSubmit)="onSearch(searchedPlayerName)">
     <div class="row justify-content-center">
       <div class="col-md-auto">
-        <mat-form-field class="player-full-width">
+        <mat-form-field>
           <input type="text" placeholder="Search a Player" [(ngModel)]="searchedPlayerName" arial-label="Player" matInput [formControl]="searchPlayerCtrl"
             [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete">
@@ -15,8 +28,6 @@
         </mat-form-field>
       </div>
       <div class="col col-lg-1">
-        <button type="submit" class="btn btn-primary" aria-label="Search Player">
-          <i class="fa fa-search fa-lg"></i> Search</button>
         <i *ngIf="loading" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
       </div>
     </div>

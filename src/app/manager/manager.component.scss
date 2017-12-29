@@ -3,8 +3,29 @@ h1 {
     text-align: center;
 }
 
+.alert {
+    margin: auto;
+    max-width: 50%;
+    text-align: center;
+}
+
 .top-buffer {
+    margin-top: 20px;
+}
+
+.top-large-buffer {
+    margin-top: 100px;
+}
+
+.search-player {
     margin-top: 50px;
+    width: 100%;
+}
+
+.search-player .mat-form-field {
+    text-align: center;
+    font-size: large;
+    width: 300px;
 }
 
 .match-table tbody tr:hover {
