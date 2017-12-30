@@ -19,7 +19,7 @@ export class PlayerDetailComponent implements OnInit {
   private player: Player;
   private matches: Array<Match> = [];
 
-  private nbMatches: number;
+  private nbMatches: number = 0;
   private ratio: any = 0;
 
   constructor(

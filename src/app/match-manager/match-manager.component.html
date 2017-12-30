@@ -19,12 +19,12 @@
     </div>
   </div>
   <div class="row justify-content-center top-buffer">
-    <div class="col">
+    <div class="col score-col">
       <input type="number" class="form-control" id="score1" aria-describedby="scorePlayer1" placeholder="{{ match?.score1 }}" min="-1"
         name="score1" [(ngModel)]="matchInput.score1" #score1="ngModel">
       <small id="score1Help" class="form-text text-muted">{{ match?.player1.name }} score was {{ match?.score1 }}</small>
     </div>
-    <div class="col">
+    <div class="col score-col">
       <input type="number" class="form-control" id="score2" aria-describedby="scorePlayer2" placeholder="{{ match?.score2 }}" min="-1"
         name="score2" [(ngModel)]="matchInput.score2" #score2="ngModel">
       <small id="score2Help" class="form-text text-muted">{{ match?.player2.name }} score was {{ match?.score2 }}</small>

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import Player from '../models/player.model';
 import Match from '../models/match.model';
 
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PlayerService } from '../services/player.service';
@@ -12,10 +11,10 @@ import { MatchService } from '../services/match.service';
 
 @Component({
   selector: 'app-manager-match',
-  templateUrl: './manager-match.component.html',
-  styleUrls: ['./manager-match.component.scss']
+  templateUrl: './match-manager.component.html',
+  styleUrls: ['./match-manager.component.scss']
 })
-export class ManagerMatchComponent implements OnInit {
+export class MatchManagerComponent implements OnInit {
 
   private match: Match;
 
@@ -37,6 +36,8 @@ export class ManagerMatchComponent implements OnInit {
       this.match = match;
     });
   }
+
+  public ngOnInit(): void {}
 
   public goback(): void {
     // return to the general user panel
@@ -75,7 +76,5 @@ export class ManagerMatchComponent implements OnInit {
     // return to the general user panel
     this.goback();
   }
-
-  public ngOnInit(): void {}
 
 }

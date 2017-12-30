@@ -60,9 +60,28 @@ export class TournamentService {
       .catch(err => this.handleError(err));
   }
 
+  // Update a Tournament to API
+  public updateTournament(tournament: any): Observable<boolean> {
+    return this.http.put(this.tournamentUrl, tournament, this.options())
+      .map(res => {
+        return true;
+      })
+      .catch(err => this.handleError(err));
+  }
+
+  // Delete a Tournament from API
+  public deleteTournament(id: any): Observable<boolean> {
+    return this.http.delete(`${this.tournamentUrl}/${id}`, this.options())
+      .map(res => {
+        return true;
+      })
+      .catch(err => this.handleError(err));
+  }
+
   // Error handling method
   private handleError(error: any): Promise<any> {
     console.error('An error occured', error);
     return Promise.reject(error.message || error);
   }
+
 }

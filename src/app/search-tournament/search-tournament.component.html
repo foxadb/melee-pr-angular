@@ -1,11 +1,11 @@
 <ng-template #rt let-r="result" let-t="term">
-  <img [src]="'assets/stock_icons/' + r.getMain() + '.png'" width="16"> {{ r.name }}
+  {{ r.name }}
 </ng-template>
 
 <div class="container">
-  <form class="form" (ngSubmit)="searchPlayer(player.name)">
+  <form class="form" (ngSubmit)="searchTournament(tournament.name)">
     <div class="row input-group">
-      <input type="text" class="form-control" placeholder="Enter a Player Name" name="name" [(ngModel)]="player" [ngbTypeahead]="search"
+      <input type="text" class="form-control" placeholder="Enter a Tournament Name" name="name" [(ngModel)]="tournament" [ngbTypeahead]="search"
         [resultTemplate]="rt" [inputFormatter]="formatter">
       <div class="input-group-btn">
         <button class="btn btn-primary" type="submit">

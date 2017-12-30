@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerMatchComponent } from './manager-match.component';
+import { SearchTournamentComponent } from './search-tournament.component';
 
-describe('UserMatchPanelComponent', () => {
-  let component: ManagerMatchComponent;
-  let fixture: ComponentFixture<ManagerMatchComponent>;
+describe('SearchTournamentComponent', () => {
+  let component: SearchTournamentComponent;
+  let fixture: ComponentFixture<SearchTournamentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManagerMatchComponent ]
+      declarations: [ SearchTournamentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerMatchComponent);
+    fixture = TestBed.createComponent(SearchTournamentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

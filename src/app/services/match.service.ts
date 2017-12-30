@@ -69,7 +69,7 @@ export class MatchService {
       .catch(err => this.handleError(err));
   }
   
-  // Delete a match from API
+  // Delete a Match from API
   public deleteMatch(id: any): Observable<boolean> {
     return this.http.delete(`${this.matchUrl}/${id}`, this.options())
     .map(res => {

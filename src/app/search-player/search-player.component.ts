@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { Router } from '@angular/router';
@@ -11,7 +11,6 @@ import Player from '../models/player.model';
 import Match from '../models/match.model';
 
 import { PlayerService } from '../services/player.service';
-import { forEach } from '@angular/router/src/utils/collection';
 import { MatchService } from '../services/match.service';
 
 @Component({
@@ -21,14 +20,19 @@ import { MatchService } from '../services/match.service';
 })
 export class SearchPlayerComponent implements OnInit {
 
-  public player: any = {};
+  // Player list
+  private players: Array<Player>;
 
-  private players: Array<any>;
+  // Player User Input
+  private player: any;
 
-  private playerMatches: Array<Match>;
+  // Send the player id to parent component
+  @Output() playerMessageEvent = new EventEmitter<Player>();
 
+  // Loading animation
   private loading = false;
 
+  // Error message box
   private error = '';
 
   search = (text: Observable<string>) =>
@@ -52,69 +56,35 @@ export class SearchPlayerComponent implements OnInit {
     // get players from database
     this.playerService.getPlayers()
       .subscribe(players => {
-        // initialization
-        this.players = [];
-
-        // push the result
-        players.forEach(player => {
-          let newPlayer = {
-            _id: player._id,
-            name: player.name,
-            main: player.mains[0]
-          };
-
-          this.players.push(newPlayer);
-        });
+        this.players = players;
       });
   }
 
   public ngOnInit(): void { }
 
   public searchPlayer(): void {
+    // reset error box
+    this.error = '';
+
     // loading animation
     this.loading = true;
 
     // find the player
     var player = this.players.find(player =>
-      player.name == this.player ||
-      player.name == this.player.name
+      player.name == this.player.name ||
+      // if autocompletion is not used
+      player.name == this.player
     );
 
     if (player) {
-      // current route url
-      const url = this.router.url;
-
-      // home (ranking page)
-      if (url == '/') {
-        const link = ['player', player._id];
-        this.router.navigate(link);
-      }
-
-      // manager panel
-      if (url == '/manager') {
-        this.searchPlayerMatches(player);
-      }
-
+      // send the player to the parent component
+      this.playerMessageEvent.emit(player);
     } else {
       // player not found
       this.error = "Player not found";
     }
     // stop loading animation
     this.loading = false;
-
-  }
-
-  public searchPlayerMatches(player: any): void {
-    this.playerService.getPlayer(player._id).subscribe(player => {
-      this.player = player;
-
-      this.player.matches.forEach(id => {
-        this.matchService.getMatch(id).subscribe(match => {
-          match.correctPlayerOrder(player);
-          this.playerMatches.push(match);
-        });
-      });
-    });
   }
 
 }

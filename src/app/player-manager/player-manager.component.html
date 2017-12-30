@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row justify-content-center buffer">
+    <div class="col-sm-3">
+      <label for="name">Name</label>
+      <input id="name" class="form-control" type="text" placeholder="{{ player?.name }}" [(ngModel)]="playerInput.name">
+    </div>
+    <div class="col-sm-3">
+      <label for="name">Location</label>
+      <input class="form-control" type="text" placeholder="{{ player?.location }}" [(ngModel)]="playerInput.location">
+    </div>
+    <div class="col-sm-2">
+      <label for="score">Score</label>
+      <input class="form-control" type="number" placeholder="{{ player?.score }}" [(ngModel)]="playerInput.score">
+    </div>
+  </div>
+  <div class="row justify-content-center buffer">
+    <div class="col-sm-2">
+      <button arial-label="Cancel" class="btn btn-primary" (click)="goback()">
+        <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
+    </div>
+    <div class="col-sm-2">
+      <button arial-label="Edit" class="btn btn-success" (click)="edit()">
+        <i class="fa fa-pencil fa-lg"></i> Edit</button>
+    </div>
+    <div class="col-sm-2">
+      <button arial-label="Delete" class="btn btn-danger" (click)="delete()">
+        <i class="fa fa-trash fa-lg"></i> Delete</button>
+    </div>
+  </div>
+  <div *ngIf="playerUpdateError" class="alert alert-danger buffer">{{ playerUpdateError }}</div>
+
+  <hr class="buffer">
+  
+  <table class="table table-striped match-table buffer">
+      <thead>
+        <tr>
+          <th>Opponent</th>
+          <th>Main(s)</th>
+          <th>Score</th>
+          <th>Tournament</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let match of matches" (click)="editMatch(match)">
+          <td>{{ match.player2.name }}</td>
+          <td>
+            <div class='stock' *ngFor="let character of match.player2.mains">
+              <img src="assets/stock_icons/{{ character }}.png" />
+            </div>
+          </td>
+          <td>{{ match.score1 }} : {{ match.score2 }}</td>
+          <td>{{ match.tournament.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

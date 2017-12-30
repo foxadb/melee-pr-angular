@@ -1,8 +1,11 @@
-<div class="container top-buffer">
+<div class="container buffer">
   <h1>
     Hello {{ username }}
     <i class="fa fa-smile-o"></i>
   </h1>
+
+  <hr class="buffer">
+
   <div class="row top-buffer justify-content-center">
     <div class="col-4">
       <button class="btn btn-primary" aria-label="Ranking" (click)="goHome()">
@@ -14,6 +17,18 @@
     </div>
   </div>
 
+  <hr class="buffer">
+
+  <div class="row buffer justify-content-center">
+    <div class="col">
+      <app-search-player (playerMessageEvent)="receivePlayerMessage($event)"></app-search-player>
+    </div>
+    <div class="col">
+      <app-search-tournament (tournamentMessageEvent)="receiveTournamentMessage($event)"></app-search-tournament>
+    </div>
+  </div>
+
+  <!--
   <form class="form search-player" (ngSubmit)="onSearch(searchedPlayerName)">
     <div class="row justify-content-center">
       <div class="col-md-auto">
@@ -87,6 +102,6 @@
         </tr>
       </tbody>
     </table>
-
   </div>
+-->
 </div>

@@ -18,6 +18,10 @@ class Player {
         this.matches = json.matches;
     }
 
+    public getMain(): string {
+        return this.mains[0];
+    }
+
     public getScore(): number {
         return this.score;
     }

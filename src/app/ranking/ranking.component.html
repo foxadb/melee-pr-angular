@@ -5,7 +5,9 @@
     <i class="fa fa-trophy" aria-hidden="true"></i>
   </div>
 
-  <app-search-player></app-search-player>
+  <div class="buffer">
+    <app-search-player (playerMessageEvent)="receivePlayerMessage($event)"></app-search-player>
+  </div>
 
   <ul class="players">
     <li *ngFor="let player of players" (click)="searchPlayer(player._id)">

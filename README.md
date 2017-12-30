@@ -4,6 +4,19 @@
 
 Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular](https://angular.io) framework.
 
+## Features
+
+#### For Guest
+
+- Look the power ranking
+- Search for specific player details (complete stats, matches results)
+
+#### For Admin
+
+- Edit player details
+- Edit match details
+- Edit tournament details
+
 ## Instructions
 
 ### Get the Node.js API
@@ -12,6 +25,7 @@ Clone the back-end and run it
 
 ```
 git clone git@github.com:foxadb/melee-pr-express.git
+cd melee-pr-express
 npm install
 npm start
 ```

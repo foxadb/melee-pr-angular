@@ -28,6 +28,11 @@ export class RankingComponent implements OnInit {
 
   public ngOnInit(): void {}
 
+  private receivePlayerMessage(player: Player): void {
+    const link = ['player', player._id];
+    this.router.navigate(link);
+  }
+
   // Search player by id
   public searchPlayer(playerId: string): void {
     const link = ['player', playerId];

@@ -83,6 +83,16 @@ export class ManagerComponent implements OnInit {
     )
   }
 
+  private receivePlayerMessage(player: Player): void {
+    const link = ['manager/player', player._id];
+    this.router.navigate(link);
+  }
+
+  private receiveTournamentMessage(tournament: Tournament): void {
+    const link = ['manager/tournament', tournament._id];
+    this.router.navigate(link);
+  }
+
   public newMatch(): any {
     var player1 = this.player;
     var player2 = this.players.find(player => player.name == this.matchInput.opponent);

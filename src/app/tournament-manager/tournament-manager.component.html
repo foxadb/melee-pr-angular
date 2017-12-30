@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row justify-content-center buffer">
+    <div class="col-sm-5">
+      <label for="name">Name</label>
+      <input id="name" class="form-control" type="text" placeholder="{{ tournament?.name }}" [(ngModel)]="tournamentInput.name">
+    </div>
+    <div class="col-sm-3">
+      <label for="score">Organiser</label>
+      <input class="form-control" type="text" placeholder="{{ tournament?.organiser }}" [(ngModel)]="tournamentInput.organiser">
+    </div>
+    <div class="col-sm-3">
+      <label for="name">Location</label>
+      <input class="form-control" type="text" placeholder="{{ tournament?.location }}" [(ngModel)]="tournamentInput.location">
+    </div>
+  </div>
+  <div class="row justify-content-center top-buffer">
+    <div class="col-sm-2">
+      <button arial-label="Cancel" class="btn btn-primary" (click)="goback()">
+        <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
+    </div>
+    <div class="col-sm-2">
+      <button arial-label="Edit" class="btn btn-success" (click)="edit()">
+        <i class="fa fa-pencil fa-lg"></i> Edit</button>
+    </div>
+    <div class="col-sm-2">
+      <button arial-label="Delete" class="btn btn-danger" (click)="delete()">
+        <i class="fa fa-trash fa-lg"></i> Delete</button>
+    </div>
+  </div>
+  <div *ngIf="tournamentUpdateError" class="alert alert-danger top-buffer">{{ tournamentUpdateError }}</div>
+
+  <hr class="buffer">
+
+  <table class="table table-striped match-table buffer">
+    <thead>
+      <tr>
+        <th>Player 1</th>
+        <th>Score</th>
+        <th>Player 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of matches" (click)="editMatch(match)">
+        <td class="player1">
+          <img src="assets/stock_icons/{{ match.player1.mains[0] }}.png"> {{ match.player1.name }}
+        </td>
+        <td>{{ match.score1 }} : {{ match.score2 }}</td>
+        <td class="player2">
+          {{ match.player2.name }}
+          <img src="assets/stock_icons/{{ match.player2.mains[0] }}.png">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

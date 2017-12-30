@@ -10,6 +10,7 @@ import { NgbTypeaheadModule, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstr
 import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
 import { LoginComponent } from './login/login.component';
 import { ManagerComponent } from './manager/manager.component';
 import { ContactComponent } from './contact/contact.component';
@@ -23,9 +24,11 @@ import { TournamentService } from './services/tournament.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
-import { ManagerMatchComponent } from './manager-match/manager-match.component';
 import { SearchPlayerComponent } from './search-player/search-player.component';
-import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
+import { SearchTournamentComponent } from './search-tournament/search-tournament.component';
+import { PlayerManagerComponent } from './player-manager/player-manager.component';
+import { MatchManagerComponent } from './match-manager/match-manager.component';
+import { TournamentManagerComponent } from './tournament-manager/tournament-manager.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,12 @@ import { TournamentDetailComponent } from './tournament-detail/tournament-detail
     LoginComponent,
     ContactComponent,
     ManagerComponent,
-    ManagerMatchComponent,
+    MatchManagerComponent,
     SearchPlayerComponent,
-    TournamentDetailComponent
+    SearchTournamentComponent,
+    TournamentDetailComponent,
+    PlayerManagerComponent,
+    TournamentManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -21,7 +21,7 @@ export class TournamentDetailComponent implements OnInit {
   private tournament: Tournament;
   private matches: Array<Match> = [];
 
-  private nbMatches: number;
+  private nbMatches: number = 0;
 
   constructor(
     private route: ActivatedRoute,

@@ -9,30 +9,13 @@ import { TournamentDetailComponent } from './tournament-detail/tournament-detail
 import { ContactComponent } from './contact/contact.component'
 import { LoginComponent } from './login/login.component';
 import { ManagerComponent } from './manager/manager.component';
-import { ManagerMatchComponent } from './manager-match/manager-match.component';
+import { PlayerManagerComponent } from './player-manager/player-manager.component';
+import { MatchManagerComponent } from './match-manager/match-manager.component';
+import { TournamentManagerComponent } from './tournament-manager/tournament-manager.component';
 
 const routes: Routes = [
   // Home page (ranking)
   { path: '', component: RankingComponent },
-  
-  // Login page
-  { path: 'login', component: LoginComponent },
-  
-  // General user panel 
-  {
-    path: 'manager',
-    component: ManagerComponent,
-    canActivate: [AuthGuard],
-    data: { expectedRole: 'manager' }
-  },
-
-  // User panel for managing match
-  {
-    path: 'manager/match/:id',
-    component: ManagerMatchComponent,
-    canActivate: [AuthGuard],
-    data: { expectedRole: 'manager' }
-  },
 
   // Player stats page
   { path: 'player/:id', component: PlayerDetailComponent },
@@ -42,7 +25,42 @@ const routes: Routes = [
 
   // Contact page
   { path: 'contact', component: ContactComponent },
-  
+
+  // Login page
+  { path: 'login', component: LoginComponent },
+
+  // General manager panel 
+  {
+    path: 'manager',
+    component: ManagerComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'manager' }
+  },
+
+  // Player manager
+  {
+    path: 'manager/player/:id',
+    component: PlayerManagerComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'manager' }
+  },
+
+  // Match manager
+  {
+    path: 'manager/match/:id',
+    component: MatchManagerComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'manager' }
+  },
+
+  // Tournament manager
+  {
+    path: 'manager/tournament/:id',
+    component: TournamentManagerComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'manager' }
+  },
+
   // Redirect other path to home
   { path: '**', redirectTo: '' }
 ]
