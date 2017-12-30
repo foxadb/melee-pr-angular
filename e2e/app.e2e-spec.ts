@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('fr-melee-pr-angular App', () => {
+describe('melee-pr-angular App', () => {
   let page: AppPage;
 
   beforeEach(() => {
