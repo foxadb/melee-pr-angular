@@ -70,7 +70,7 @@ export class PlayerService {
   }
 
   // Delete a Player from API
-  public deleteMatch(id: any): Observable<boolean> {
+  public deletePlayer(id: any): Observable<boolean> {
     return this.http.delete(`${this.playerUrl}/${id}`, this.options())
       .map(res => {
         return true;

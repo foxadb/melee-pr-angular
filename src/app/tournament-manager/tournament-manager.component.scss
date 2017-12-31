@@ -3,6 +3,10 @@
     margin-bottom: 50px;
 }
 
+h2 {
+    text-align: center;
+}
+
 table {
     margin: auto;
     width: 50%;
@@ -23,4 +27,8 @@ table .player2 {
 .match-table tbody tr:hover {
     background-color: #dddddd;
     box-shadow: 0 0 10px #000000;
+}
+
+.alert {
+    text-align: center;
 }

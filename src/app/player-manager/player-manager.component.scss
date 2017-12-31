@@ -1,6 +1,15 @@
+.small-buffer {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
 .buffer {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
 }
 
 .match-table {
@@ -10,4 +19,8 @@
 .match-table tbody tr:hover {
     background-color: #dddddd;
     box-shadow: 0 0 10px #000000;
+}
+
+.alert {
+    text-align: center;
 }

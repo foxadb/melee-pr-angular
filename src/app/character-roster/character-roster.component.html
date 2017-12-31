@@ -1,16 +1,15 @@
 <div class="container">
   <h2>Mains</h2>
-  <div class="row justify-content-center buffer">
-    <div *ngFor="let main of mains">
-      <button (click)="removeMain(main)" type="button" class="btn btn-default">
-        <img src="assets/stock_icons/{{ main }}.png">
-      </button>
+  <div class="mains-box border">
+    <div class="row justify-content-center buffer">
+      <div *ngFor="let main of mains">
+        <button (click)="removeMain(main)" type="button" class="btn btn-default">
+          <img src="assets/stock_icons/{{ main }}.png">
+        </button>
+      </div>
     </div>
   </div>
 
-  <hr class="buffer">
-
-  <h2>Melee Roster</h2>
   <div class="row justify-content-center buffer">
     <button (click)="addMain('fox')" type="button" class="btn btn-default">
       <img src="assets/stock_icons/fox.png">

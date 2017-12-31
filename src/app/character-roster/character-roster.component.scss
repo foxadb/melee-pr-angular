@@ -1,8 +1,15 @@
-h2 {
+.container {
     text-align: center;
 }
 
 .buffer {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.mains-box {
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 16px auto 16px auto;
 }

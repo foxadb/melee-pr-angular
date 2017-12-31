@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import Tournament from '../models/tournament.model';
+import Player from '../models/player.model';
 import Match from '../models/match.model';
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -18,12 +19,21 @@ export class TournamentManagerComponent implements OnInit {
 
   private tournament: Tournament;
   private matches: Array<Match> = [];
+  private nbMatches: number;
 
+  // Editing the Tournament
   private tournamentInput: any = {};
 
-  private nbMatches: number;
-  
+  // Adding a New Match
+  private newMatchInput: any = {};
+  private player1: Player;
+  private player2: Player;
+
+  private tournamentUpdateSuccess = '';
   private tournamentUpdateError = '';
+
+  private matchCreationSuccess = '';
+  private matchCreationError = '';
 
   constructor(
     private router: Router,
@@ -32,11 +42,34 @@ export class TournamentManagerComponent implements OnInit {
     private tournamentService: TournamentService,
     private matchService: MatchService
   ) {
-    // get the tournament id
+    // get the tournament
     var tournamentId = this.route.snapshot.paramMap.get('id');
-
-    this.tournamentService.getTournament(tournamentId).subscribe(tournament => {
+    this.getTournament(tournamentId);
+    /*this.tournamentService.getTournament(tournamentId).subscribe(tournament => {
       this.tournament = tournament;
+
+      this.tournament.matches.forEach(id => {
+        this.matchService.getMatch(id).subscribe(
+          match => {
+            this.matches.push(match);
+          },
+          error => console.log("Error: ", error),
+          () => {
+            // Number of matches
+            this.nbMatches = this.matches.length;
+          }
+        )
+      });
+    });*/
+  }
+
+  public ngOnInit(): void { }
+
+  private getTournament(id: string) {
+    this.tournamentService.getTournament(id).subscribe(tournament => {
+      this.tournament = tournament;
+
+      this.matches = [];
 
       this.tournament.matches.forEach(id => {
         this.matchService.getMatch(id).subscribe(
@@ -53,14 +86,12 @@ export class TournamentManagerComponent implements OnInit {
     });
   }
 
-  public ngOnInit(): void { }
-
-  public goBack(): void {
+  private goBack(): void {
     // return to the general user panel
     this.router.navigate(['manager']);
   }
 
-  public edit(): void {
+  private editTournament(): void {
     // create the updated tournament for PUT request
     var tournament = {
       _id: this.tournament._id,
@@ -78,7 +109,7 @@ export class TournamentManagerComponent implements OnInit {
       });
   }
 
-  public delete(): void {
+  private deleteTournament(): void {
     this.tournamentService.deleteTournament(this.tournament._id)
       .subscribe(res => {
         if (!res) {
@@ -90,8 +121,50 @@ export class TournamentManagerComponent implements OnInit {
     setTimeout(() => this.goBack(), 1000);
   }
 
+  private receivePlayer1Message(player: Player): void {
+    this.player1 = player;
+  }
+
+  private receivePlayer2Message(player: Player): void {
+    this.player2 = player;
+  }
+
+  private addMatch(): void {
+    // reset status boxes
+    this.matchCreationSuccess, this.matchCreationError = '';
+
+    var player1 = this.player1;
+    var player2 = this.player2;
+    var score1 = (this.newMatchInput.score1 >= -1) ? this.newMatchInput.score1 : 0;
+    var score2 = (this.newMatchInput.score2 >= -1) ? this.newMatchInput.score2 : 0;
+
+    if (player1 && player2) {
+      var newMatch = {
+        player1: player1,
+        player2: player2,
+        score1: score1,
+        score2: score2,
+        tournament: this.tournament._id
+      };
+
+      this.matchService.createMatch(newMatch)
+        .subscribe(res => {
+                    if (res) {
+            this.matchCreationSuccess = "Match added";
+
+            // update the tournament data display
+            this.getTournament(this.tournament._id);
+          } else {
+            this.matchCreationError = "Error when creating match";
+          }
+        });
+    } else {
+      this.matchCreationError = "Wrong parameters";
+    }
+  }
+
   // Edit a Match
-  public editMatch(match: Match): void {
+  private editMatch(match: Match): void {
     const link = ['manager/match', match._id];
     this.router.navigate(link);
   }

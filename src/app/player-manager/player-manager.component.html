@@ -1,4 +1,6 @@
 <div class="container">
+  <h2 class="small-buffer">{{ player?.name }}</h2>
+
   <div class="row justify-content-center buffer">
     <div class="col-sm-3">
       <label for="name">Name</label>
@@ -13,6 +15,11 @@
       <input class="form-control" type="number" placeholder="{{ player?.score }}" [(ngModel)]="playerInput.score">
     </div>
   </div>
+  
+  <app-character-roster [mains]="mains" (characterMessageEvent)="receiveCharacterMessage($event)"></app-character-roster>
+
+  <hr class="buffer">
+
   <div class="row justify-content-center buffer">
     <div class="col-sm-2">
       <button arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
@@ -28,8 +35,7 @@
     </div>
   </div>
 
-  <app-character-roster [mains]="mains" (characterMessageEvent)="receiveCharacterMessage($event)"></app-character-roster>
-
+  <div *ngIf="playerUpdateSuccess" class="alert alert-success buffer">{{ playerUpdateSuccess }}</div>
   <div *ngIf="playerUpdateError" class="alert alert-danger buffer">{{ playerUpdateError }}</div>
 
   <hr class="buffer">

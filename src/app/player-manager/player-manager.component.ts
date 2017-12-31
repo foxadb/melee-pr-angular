@@ -24,6 +24,7 @@ export class PlayerManagerComponent implements OnInit {
 
   private nbMatches: number;
 
+  private playerUpdateSuccess = '';
   private playerUpdateError = '';
 
   constructor(
@@ -80,7 +81,15 @@ export class PlayerManagerComponent implements OnInit {
     // update the match
     this.playerService.updatePlayer(player)
       .subscribe(res => {
-        if (!res) {
+        // reset message boxes
+        this.playerUpdateSuccess, this.playerUpdateError = '';
+
+        if (res) {
+          this.playerUpdateSuccess = "Player updated!";
+
+          // return to the general user panel
+          setTimeout(() => this.goBack(), 1000);
+        } else {
           this.playerUpdateError = "Error when updating the match";
         }
       });
@@ -88,9 +97,17 @@ export class PlayerManagerComponent implements OnInit {
 
   private delete(): void {
     // delete the player from database
-    this.playerService.deleteMatch(this.player._id)
+    this.playerService.deletePlayer(this.player._id)
       .subscribe(res => {
-        if (!res) {
+        // reset message boxes
+        this.playerUpdateSuccess, this.playerUpdateError = '';
+
+        if (res) {
+          this.playerUpdateSuccess = "Player deleted!";
+
+          // return to the general user panel
+          setTimeout(() => this.goBack(), 1000);
+        } else {
           this.playerUpdateError = "Error when deleting the match";
         }
       });
