@@ -27,6 +27,9 @@
         <i class="fa fa-trash fa-lg"></i> Delete</button>
     </div>
   </div>
+
+  <app-character-roster [mains]="mains" (characterMessageEvent)="receiveCharacterMessage($event)"></app-character-roster>
+
   <div *ngIf="playerUpdateError" class="alert alert-danger buffer">{{ playerUpdateError }}</div>
 
   <hr class="buffer">

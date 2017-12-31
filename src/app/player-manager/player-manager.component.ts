@@ -18,6 +18,7 @@ export class PlayerManagerComponent implements OnInit {
 
   private player: Player;
   private matches: Array<Match> = [];
+  private mains: Array<string>
 
   private playerInput: any = {};
 
@@ -37,6 +38,7 @@ export class PlayerManagerComponent implements OnInit {
 
     this.playerService.getPlayer(playerId).subscribe(player => {
       this.player = player;
+      this.mains = player.mains;
 
       this.player.matches.forEach(id => {
         this.matchService.getMatch(id).subscribe(
@@ -56,18 +58,23 @@ export class PlayerManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  public goback(): void {
+  private goback(): void {
     // return to the general user panel
     this.router.navigate(['manager']);
   }
 
-  public edit(): void {
+  private receiveCharacterMessage(characters: Array<string>): void {
+    this.playerInput.mains = characters;
+  }
+
+  private edit(): void {
     // create the updated player for PUT request
     var player = {
       _id: this.player._id,
       name: this.playerInput.name,
       location: this.playerInput.location,
-      score: this.playerInput.score
+      score: this.playerInput.score,
+      mains: this.playerInput.mains
     };
 
     // update the match
@@ -79,10 +86,8 @@ export class PlayerManagerComponent implements OnInit {
       });
   }
 
-  public delete(): void {
-    console.log("NO DELETION FOR THE MOMENT !!");
-    /*
-    // delete the match
+  private delete(): void {
+    // delete the player from database
     this.playerService.deleteMatch(this.player._id)
       .subscribe(res => {
         if (!res) {
@@ -92,11 +97,10 @@ export class PlayerManagerComponent implements OnInit {
 
     // return to the general user panel
     this.goback();
-    */
   }
 
   // Edit a Match
-  public editMatch(match: Match): void {
+  private editMatch(match: Match): void {
     const link = ['manager/match', match._id];
     this.router.navigate(link);
   }

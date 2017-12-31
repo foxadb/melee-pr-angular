@@ -181,7 +181,7 @@ export class ManagerComponent implements OnInit {
   }
 
   public newPlayer(): void {
-    console.log('TODO');
+    this.router.navigate(['manager/player']);
   }
 
   public newTournament(): void {

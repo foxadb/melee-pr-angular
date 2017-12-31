@@ -9,6 +9,7 @@ import { TournamentDetailComponent } from './tournament-detail/tournament-detail
 import { ContactComponent } from './contact/contact.component'
 import { LoginComponent } from './login/login.component';
 import { ManagerComponent } from './manager/manager.component';
+import { NewPlayerComponent } from './new-player/new-player.component';
 import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 import { PlayerManagerComponent } from './player-manager/player-manager.component';
 import { MatchManagerComponent } from './match-manager/match-manager.component';
@@ -34,6 +35,14 @@ const routes: Routes = [
   {
     path: 'manager',
     component: ManagerComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'manager' }
+  },
+
+  // Player Creator 
+  {
+    path: 'manager/player',
+    component: NewPlayerComponent,
     canActivate: [AuthGuard],
     data: { expectedRole: 'manager' }
   },
