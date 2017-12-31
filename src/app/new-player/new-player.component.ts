@@ -32,7 +32,7 @@ export class NewPlayerComponent implements OnInit {
   private newPlayer(): any {
     var name = this.input.name;
     var location = this.input.location;
-    var score = (this.input.score >=0) ? this.input.score : 1000;
+    var score = (this.input.score != null) ? this.input.score : 1000;
     var mains = this.input.mains;
 
     if (name && location && score && mains) {

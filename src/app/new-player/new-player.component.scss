@@ -1,7 +1,7 @@
 .container {
     margin-top: 64px;
     margin-bottom: 64px;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .form-group {
@@ -12,4 +12,8 @@
 .btn {
     display: block;
     margin: 0 auto;
+}
+
+.alert {
+    text-align: center;
 }

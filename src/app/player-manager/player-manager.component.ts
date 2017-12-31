@@ -23,7 +23,7 @@ export class PlayerManagerComponent implements OnInit {
   private playerInput: any = {};
 
   private nbMatches: number;
-  
+
   private playerUpdateError = '';
 
   constructor(
@@ -58,7 +58,7 @@ export class PlayerManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private goback(): void {
+  private goBack(): void {
     // return to the general user panel
     this.router.navigate(['manager']);
   }
@@ -96,7 +96,7 @@ export class PlayerManagerComponent implements OnInit {
       });
 
     // return to the general user panel
-    this.goback();
+    setTimeout(() => this.goBack(), 1000);
   }
 
   // Edit a Match

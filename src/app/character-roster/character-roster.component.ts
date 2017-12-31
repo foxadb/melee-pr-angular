@@ -20,7 +20,9 @@ export class CharacterRosterComponent implements OnInit {
 
   public ngOnInit(): void {
     // initialize mains with parent input
-    this.mains = this.characterMessage;
+    if (this.characterMessage) {
+      this.mains = this.characterMessage;
+    }
   }
 
   private addMain(character: string): void {

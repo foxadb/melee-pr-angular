@@ -55,7 +55,7 @@ export class TournamentManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  public goback(): void {
+  public goBack(): void {
     // return to the general user panel
     this.router.navigate(['manager']);
   }
@@ -87,7 +87,7 @@ export class TournamentManagerComponent implements OnInit {
       });
 
     // return to the general user panel
-    this.goback();
+    setTimeout(() => this.goBack(), 1000);
   }
 
   // Edit a Match
