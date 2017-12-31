@@ -180,6 +180,14 @@ export class ManagerComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  public newPlayer(): void {
+    console.log('TODO');
+  }
+
+  public newTournament(): void {
+    this.router.navigate(['manager/tournament']);
+  }
+
   // Go to home (ranking)
   public goHome(): void {
     this.router.navigate(['']);

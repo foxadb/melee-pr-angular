@@ -79,19 +79,15 @@ export class TournamentManagerComponent implements OnInit {
   }
 
   public delete(): void {
-    console.log("NO DELETION FOR THE MOMENT !!");
-    /*
-    // delete the match
-    this.tournamentService.deleteMatch(this.tournament._id)
+    this.tournamentService.deleteTournament(this.tournament._id)
       .subscribe(res => {
         if (!res) {
-          this.tournamentUpdateError = "Error when deleting the match";
+          this.tournamentUpdateError = "Error when deleting the tournament";
         }
       });
 
     // return to the general user panel
     this.goback();
-    */
   }
 
   // Edit a Match

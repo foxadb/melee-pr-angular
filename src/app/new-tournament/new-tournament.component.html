@@ -1,0 +1,25 @@
+<div class="container">
+  <form class="form" (ngSubmit)="createTournament()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="name">Tournament Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter the Tournament Name" name="name" [(ngModel)]="input.name"
+        #name="ngModel" required>
+    </div>
+    <div class="form-group">
+      <label for="organiser">Organiser:</label>
+      <input type="text" class="form-control" id="organiser" placeholder="Enter the Organiser Name" name="organiser" [(ngModel)]="input.organiser"
+        #organiser="ngModel" required>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" class="form-control" id="location" placeholder="Enter the Tournament Location" name="location" [(ngModel)]="input.location"
+        #location="ngModel" required>
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-success">
+      <i class="fa fa-plus fa-lg"></i> Create Tournament</button>
+    </div>
+ </form>
+  <div *ngIf="creationSuccess" class="alert alert-success">{{ creationSuccess }}</div>
+  <div *ngIf="creationError" class="alert alert-danger">{{ creationError }}</div>
+</div>

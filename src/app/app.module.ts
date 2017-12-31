@@ -29,6 +29,7 @@ import { SearchTournamentComponent } from './search-tournament/search-tournament
 import { PlayerManagerComponent } from './player-manager/player-manager.component';
 import { MatchManagerComponent } from './match-manager/match-manager.component';
 import { TournamentManagerComponent } from './tournament-manager/tournament-manager.component';
+import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TournamentManagerComponent } from './tournament-manager/tournament-mana
     SearchTournamentComponent,
     TournamentDetailComponent,
     PlayerManagerComponent,
-    TournamentManagerComponent
+    TournamentManagerComponent,
+    NewTournamentComponent
   ],
   imports: [
     BrowserModule,
