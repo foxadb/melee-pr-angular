@@ -11,11 +11,18 @@ Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular](h
 - Look the power ranking
 - Search for specific player details (complete stats, matches results)
 
-#### For Admin
+#### For Manager
 
+- Add new player
+- Add new tournament
 - Edit player details
 - Edit match details
 - Edit tournament details
+
+#### For Admin
+
+- Add new user (manager/admin)
+- Delete existing user
 
 ## Instructions
 
