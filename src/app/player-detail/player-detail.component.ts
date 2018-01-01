@@ -51,8 +51,8 @@ export class PlayerDetailComponent implements OnInit {
             // Number of matches
             this.nbMatches = this.matches.length;
 
-            // Compute the wins loss ratio
-            this.ratio = this.computeRatio();
+            // Compute the wins loss ratio and rounding
+            this.ratio = Math.round(this.computeRatio() * 100) / 100;
           }
         )
       });
@@ -84,7 +84,7 @@ export class PlayerDetailComponent implements OnInit {
       }
     });
 
-    // Compute the win lost ratio
+    // Compute the wins loss ratio
     if (loss == 0) {
       return 'inf';
     } else {
