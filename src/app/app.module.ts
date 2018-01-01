@@ -32,6 +32,7 @@ import { TournamentManagerComponent } from './tournament-manager/tournament-mana
 import { NewPlayerComponent } from './new-player/new-player.component';
 import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 import { CharacterRosterComponent } from './character-roster/character-roster.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CharacterRosterComponent } from './character-roster/character-roster.co
     TournamentManagerComponent,
     NewPlayerComponent,
     NewTournamentComponent,
-    CharacterRosterComponent
+    CharacterRosterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

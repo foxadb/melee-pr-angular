@@ -51,7 +51,7 @@ export class PlayerService {
       .catch(err => this.handleError(err));
   }
 
-  // Create a new Patch to API
+  // Create a new Player to API
   public createPlayer(player: any): Observable<boolean> {
     return this.http.post(this.playerUrl, player, this.options())
       .map(res => {

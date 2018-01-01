@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       // decode the token payload
       const tokenPayload = this.jwtHelper.decodeToken(currentUser.token);
 
-      if (this.auth.isAuthenticated() && tokenPayload.role == expectedRole) {
+      if (this.auth.isAuthenticated() && this.checkPermission(tokenPayload, expectedRole)) {
         return true;
       }
     }
@@ -30,4 +30,11 @@ export class AuthGuard implements CanActivate {
     this.router.navigate(['login']);
     return false;
   }
+
+  public checkPermission(tokenPayload: any, expectedRole: any): boolean {
+    let role = tokenPayload.role;
+    // allow admin to access the entire app
+    return ((role == 'admin') || role == expectedRole);
+  }
+
 }

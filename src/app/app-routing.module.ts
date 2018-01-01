@@ -8,6 +8,7 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component'
 import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component'
 import { ContactComponent } from './contact/contact.component'
 import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
 import { NewPlayerComponent } from './new-player/new-player.component';
 import { NewTournamentComponent } from './new-tournament/new-tournament.component';
@@ -30,6 +31,14 @@ const routes: Routes = [
 
   // Login page
   { path: 'login', component: LoginComponent },
+
+  // Admin panel
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRole: 'admin' }
+  },
 
   // General manager panel 
   {

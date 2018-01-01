@@ -33,9 +33,8 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['manager']);
               break;
             }
-
             case 'admin': {
-              console.log("You are admin. Congratulations!");
+              this.router.navigate(['admin']);
               break;
             }
           }
@@ -50,4 +49,5 @@ export class LoginComponent implements OnInit {
       }
       );
   }
+
 }

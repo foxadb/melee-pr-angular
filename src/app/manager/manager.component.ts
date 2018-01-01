@@ -22,8 +22,9 @@ import { TournamentService } from '../services/tournament.service';
 })
 export class ManagerComponent implements OnInit {
 
-  // Username logged in
+  // Username and role logged in
   private username: string;
+  private role: string;
 
   // Form attributes
   private matchInput: any = {};
@@ -60,8 +61,9 @@ export class ManagerComponent implements OnInit {
     private matchService: MatchService,
     private tournamentService: TournamentService
   ) {
-    // set username
+    // get username and role
     this.username = this.auth.getUsername();
+    this.role = this.auth.getRole();
 
     // get players from database
     this.playerService.getPlayers()
@@ -174,12 +176,6 @@ export class ManagerComponent implements OnInit {
     }
   }
 
-  // Edit a Match
-  public editMatch(matchId: string): void {
-    const link = ['manager/match', matchId];
-    this.router.navigate(link);
-  }
-
   public newPlayer(): void {
     this.router.navigate(['manager/player']);
   }
@@ -191,6 +187,11 @@ export class ManagerComponent implements OnInit {
   // Go to home (ranking)
   public goHome(): void {
     this.router.navigate(['']);
+  }
+
+  // Go to admin panel
+  public goAdmin(): void {
+    this.router.navigate(['admin']);
   }
 
   // Log out

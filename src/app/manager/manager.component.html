@@ -9,7 +9,11 @@
   <div class="row top-buffer justify-content-center">
     <div class="col-4">
       <button class="btn btn-primary" aria-label="Ranking" (click)="goHome()">
-        <i class="fa fa-outdent fa-lg"></i> Go to Ranking</button>
+        <i class="fa fa-outdent fa-lg"></i> Power Ranking</button>
+    </div>
+    <div *ngIf="role == 'admin'" class="col-4">
+      <button class="btn btn-primary" aria-label="Ranking" (click)="goAdmin()">
+        <i class="fa fa-unlock fa-lg"></i> Admin Panel</button>
     </div>
     <div class="col-2">
       <button class="btn btn-danger" aria-label="Logout" (click)="logout()">
