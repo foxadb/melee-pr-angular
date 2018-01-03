@@ -1,26 +1,28 @@
 <div class="container">
-  <div class="title">
+  <div class="row justify-content-center title">
     <i class="fa fa-trophy" aria-hidden="true"></i>
     Melee Power Ranking
     <i class="fa fa-trophy" aria-hidden="true"></i>
   </div>
 
-  <div class="buffer">
+  <div class="row justify-content-center buffer">
     <app-search-player (playerMessageEvent)="receivePlayerMessage($event)"></app-search-player>
   </div>
 
-  <ul class="players">
-    <li *ngFor="let player of players" (click)="searchPlayer(player._id)">
-      <span class="player-element">
-        <span class="badge">{{ player.score }}</span>
-        <span class="name">{{ player.name }}</span>
-        <span class="mains">
-          <div class='stock' *ngFor="let character of player.mains">
-            <img src="assets/stock_icons/{{ character }}.png" />
-          </div>
+  <div class="row justify-content-center">
+    <ul class="players">
+      <li *ngFor="let player of players" (click)="searchPlayer(player._id)">
+        <span class="player-element">
+          <span class="badge">{{ player.score }}</span>
+          <span class="name">{{ player.name }}</span>
+          <span class="mains">
+            <div class='stock' *ngFor="let character of player.mains">
+              <img src="assets/stock_icons/{{ character }}.png" />
+            </div>
+          </span>
+          <span class="location">{{ player.location }}</span>
         </span>
-        <span class="location">{{ player.location }}</span>
-      </span>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </div>

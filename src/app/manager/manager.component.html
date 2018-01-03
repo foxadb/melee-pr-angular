@@ -7,15 +7,15 @@
   <hr class="buffer">
 
   <div class="row top-buffer justify-content-center">
-    <div class="col-4">
+    <div class="element col-sm-4">
       <button class="btn btn-primary" aria-label="Ranking" (click)="goHome()">
         <i class="fa fa-outdent fa-lg"></i> Power Ranking</button>
     </div>
-    <div *ngIf="role == 'admin'" class="col-4">
-      <button class="btn btn-primary" aria-label="Ranking" (click)="goAdmin()">
+    <div class="element col-sm-4" *ngIf="role == 'admin'">
+      <button class="btn btn-primary" aria-label="Admin" (click)="goAdmin()">
         <i class="fa fa-unlock fa-lg"></i> Admin Panel</button>
     </div>
-    <div class="col-2">
+    <div class="element col-sm-2">
       <button class="btn btn-danger" aria-label="Logout" (click)="logout()">
         <i class="fa fa-sign-out fa-lg"></i> Sign Out</button>
     </div>
@@ -24,10 +24,10 @@
   <hr class="buffer">
 
   <div class="row buffer justify-content-center">
-    <div class="col">
+    <div class="element col-md-6">
       <app-search-player (playerMessageEvent)="receivePlayerMessage($event)"></app-search-player>
     </div>
-    <div class="col">
+    <div class="element col-md-6">
       <app-search-tournament (tournamentMessageEvent)="receiveTournamentMessage($event)"></app-search-tournament>
     </div>
   </div>
@@ -35,11 +35,11 @@
   <hr class="buffer">
 
   <div class="row buffer justify-content-center">
-    <div class="col-4">
+    <div class="element col-sm-4">
       <button class="btn btn-success" aria-label="New Player" (click)="newPlayer()">
         <i class="fa fa-plus fa-lg"></i> New Player</button>
     </div>
-    <div class="col-2">
+    <div class="element col-sm-2">
       <button class="btn btn-success" aria-label="New Tournament" (click)="newTournament()">
         <i class="fa fa-plus fa-lg"></i> New Tournament</button>
     </div>

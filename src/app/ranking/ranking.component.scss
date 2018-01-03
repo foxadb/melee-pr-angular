@@ -16,22 +16,18 @@
     padding-right: 5px;
 }
 
-.player-form {
-    padding: 20px;
-    width: 50%;
-    text-align: center;
-    margin: auto;
-}
-  
-.player-full-width {
-    width: 50%;
-}
-
 .players {
     margin: auto;
     list-style-type: none;
-    padding: 50px;
+    padding: 16px;
     width: 75%;
+}
+
+@media screen and (max-width: 992px) {
+    .players {
+        padding: 0;
+        width: 100%;
+    }
 }
 
 .players li {
@@ -65,7 +61,7 @@
 
 .players .mains {
     position: absolute;
-    left: 40%;
+    left: 50%;
 }
 
 .players .location {
