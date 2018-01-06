@@ -88,7 +88,7 @@ export class TournamentManagerComponent implements OnInit {
 
   private goBack(): void {
     // return to the general user panel
-    this.router.navigate(['manager']);
+    this.location.back();
   }
 
   private editTournament(): void {

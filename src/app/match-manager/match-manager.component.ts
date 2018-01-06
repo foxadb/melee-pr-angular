@@ -41,7 +41,7 @@ export class MatchManagerComponent implements OnInit {
 
   public goback(): void {
     // return to the general user panel
-    this.router.navigate(['manager']);
+    this.location.back();
   }
 
   public edit(): void {

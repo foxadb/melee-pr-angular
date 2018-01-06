@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { PlayerService } from '../services/player.service';
 
@@ -19,6 +20,7 @@ export class NewPlayerComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private location: Location,
     private playerService: PlayerService
   ) { }
 
@@ -72,7 +74,7 @@ export class NewPlayerComponent implements OnInit {
 
   // Return to manager panel
   private goBack(): void {
-    this.router.navigate(['manager']);
+    this.location.back();
   }
 
 }

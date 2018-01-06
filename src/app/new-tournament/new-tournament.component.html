@@ -15,11 +15,20 @@
       <input type="text" class="form-control" id="location" placeholder="Enter the Tournament Location" name="location" [(ngModel)]="input.location"
         #location="ngModel" required>
     </div>
+
     <div class="form-group">
-    <button type="submit" class="btn btn-success">
-      <i class="fa fa-plus fa-lg"></i> Create Tournament</button>
+      <div class="row">
+        <div class="col-sm-6 element">
+          <button type="button" arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
+            <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
+        </div>
+        <div class="col-sm-6 element">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-plus fa-lg"></i> Create Tournament</button>
+        </div>
+      </div>
     </div>
- </form>
+  </form>
   <div *ngIf="creationSuccess" class="alert alert-success">{{ creationSuccess }}</div>
   <div *ngIf="creationError" class="alert alert-danger">{{ creationError }}</div>
 </div>

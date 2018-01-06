@@ -12,17 +12,25 @@
     </div>
     <div class="form-group">
       <label for="score">Score: (default is 1000)</label>
-      <input type="number" class="form-control" id="score" placeholder="1000" name="score" [(ngModel)]="input.score"
-        #location="ngModel" required>
+      <input type="number" class="form-control" id="score" placeholder="1000" name="score" [(ngModel)]="input.score" #location="ngModel"
+        required>
     </div>
 
     <app-character-roster (characterMessageEvent)="receiveCharacterMessage($event)"></app-character-roster>
-
+    
     <div class="form-group">
-    <button type="submit" class="btn btn-success">
-      <i class="fa fa-plus fa-lg"></i> Create Player</button>
+      <div class="row">
+        <div class="col-sm-6 element">
+          <button type="button" arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
+            <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
+        </div>
+        <div class="col-sm-6 element">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-plus fa-lg"></i> Create Player</button>
+        </div>
+      </div>
     </div>
- </form>
+  </form>
   <div *ngIf="creationSuccess" class="alert alert-success">{{ creationSuccess }}</div>
   <div *ngIf="creationError" class="alert alert-danger">{{ creationError }}</div>
 </div>
