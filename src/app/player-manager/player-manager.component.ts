@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import Player from '../models/player.model';
 import Match from '../models/match.model';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 
 import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
@@ -23,6 +25,8 @@ export class PlayerManagerComponent implements OnInit {
   private playerInput: any = {};
 
   private nbMatches: number;
+
+  @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
   private playerUpdateSuccess = '';
   private playerUpdateError = '';
@@ -96,24 +100,29 @@ export class PlayerManagerComponent implements OnInit {
   }
 
   private delete(): void {
-    // delete the player from database
-    this.playerService.deletePlayer(this.player._id)
-      .subscribe(res => {
-        // reset message boxes
-        this.playerUpdateSuccess, this.playerUpdateError = '';
+    this.confirmModal.open("Confirm you want to delete " + this.player.name).then(
+      () => {
+        // delete the player from database
+        this.playerService.deletePlayer(this.player._id)
+          .subscribe(res => {
+            // reset message boxes
+            this.playerUpdateSuccess, this.playerUpdateError = '';
 
-        if (res) {
-          this.playerUpdateSuccess = "Player deleted!";
+            if (res) {
+              this.playerUpdateSuccess = "Player deleted!";
 
-          // return to the general user panel
-          setTimeout(() => this.goBack(), 1000);
-        } else {
-          this.playerUpdateError = "Error when deleting the match";
-        }
-      });
+              // return to the general user panel
+              setTimeout(() => this.goBack(), 1000);
+            } else {
+              this.playerUpdateError = "Error when deleting the match";
+            }
+          });
 
-    // return to the general user panel
-    setTimeout(() => this.goBack(), 1000);
+        // return to the general user panel
+        setTimeout(() => this.goBack(), 1000);
+      },
+      () => this.playerUpdateError = "Player not deleted"
+    );
   }
 
   // Edit a Match

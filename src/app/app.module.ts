@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatInputModule } from '@angular/material';
-import { NgbTypeaheadModule, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTypeaheadModule, NgbTypeaheadConfig, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -33,6 +33,7 @@ import { NewPlayerComponent } from './new-player/new-player.component';
 import { NewTournamentComponent } from './new-tournament/new-tournament.component';
 import { CharacterRosterComponent } from './character-roster/character-roster.component';
 import { AdminComponent } from './admin/admin.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AdminComponent } from './admin/admin.component';
     NewPlayerComponent,
     NewTournamentComponent,
     CharacterRosterComponent,
-    AdminComponent
+    AdminComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { AdminComponent } from './admin/admin.component';
     MatAutocompleteModule,
     MatInputModule,
     NgbTypeaheadModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [
     AuthGuard,
@@ -72,7 +75,8 @@ import { AdminComponent } from './admin/admin.component';
     PlayerService,
     MatchService,
     TournamentService,
-    NgbTypeaheadConfig
+    NgbTypeaheadConfig,
+    NgbModal
   ],
   bootstrap: [AppComponent]
 })

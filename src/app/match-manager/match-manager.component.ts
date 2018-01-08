@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import Player from '../models/player.model';
 import Match from '../models/match.model';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 
 import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
@@ -19,6 +21,8 @@ export class MatchManagerComponent implements OnInit {
   private match: Match;
 
   private matchInput: any = {};
+
+  @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
   private matchUpdateError = '';
 
@@ -37,7 +41,7 @@ export class MatchManagerComponent implements OnInit {
     });
   }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void { }
 
   public goback(): void {
     // return to the general user panel
@@ -65,16 +69,21 @@ export class MatchManagerComponent implements OnInit {
   }
 
   public delete(): void {
-    // delete the match
-    this.matchService.deleteMatch(this.match._id)
-      .subscribe(res => {
-        if (!res) {
-          this.matchUpdateError = "Error when deleting the match";
-        }
-      });
+    this.confirmModal.open("Confirm you want to delete this match").then(
+      () => {
+        // delete the match
+        this.matchService.deleteMatch(this.match._id)
+          .subscribe(res => {
+            if (!res) {
+              this.matchUpdateError = "Error when deleting the match";
+            }
+          });
 
-    // return to the general user panel
-    this.goback();
+        // return to the general user panel
+        this.goback();
+      },
+      () => this.matchUpdateError = "Match not deleted"
+    );
   }
 
 }

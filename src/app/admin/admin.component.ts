@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
+
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 
 import User from '../models/user.model';
 
@@ -19,6 +21,10 @@ export class AdminComponent implements OnInit {
 
   private input: any = {};
 
+  @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
+
+  private confirm: boolean = false;
+
   private successMessageBox: string;
   private errorMessageBox: string;
 
@@ -33,7 +39,7 @@ export class AdminComponent implements OnInit {
     // get users
     this.getUsers();
   }
-    
+
   public ngOnInit(): void { }
 
   private getUsers(): void {
@@ -42,7 +48,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-// Collect user input to create the user body parameter for creation
+  // Collect user input to create the user body parameter for creation
   public newUser(): any {
     var username = this.input.username;
     var password = this.input.password;
@@ -83,16 +89,21 @@ export class AdminComponent implements OnInit {
 
   // Delete the user
   private deleteUser(id: string): void {
-    this.userService.deleteUser(id).subscribe(
-      res => {
-        if (res) {
-          this.successMessageBox = "User deleted";
-        } else {
-          this.errorMessageBox = "Error when deleting user";
-        }
-        // update the user list
-        this.getUsers();
-      });
+    this.confirmModal.open("Confirm you want to delete this user").then(
+      () => {
+        this.userService.deleteUser(id).subscribe(
+          res => {
+            if (res) {
+              this.successMessageBox = "User deleted";
+            } else {
+              this.errorMessageBox = "Error when deleting user";
+            }
+            // update the user list
+            this.getUsers();
+          });
+      },
+      () => this.errorMessageBox = "User not deleted"
+    );
   }
 
   // Go to home (ranking)

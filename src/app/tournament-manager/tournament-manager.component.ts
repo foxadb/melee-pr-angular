@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import Tournament from '../models/tournament.model';
 import Player from '../models/player.model';
@@ -6,6 +6,8 @@ import Match from '../models/match.model';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 
 import { TournamentService } from '../services/tournament.service';
 import { MatchService } from '../services/match.service';
@@ -29,6 +31,8 @@ export class TournamentManagerComponent implements OnInit {
   private player1: Player;
   private player2: Player;
 
+  @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
+
   private tournamentUpdateSuccess = '';
   private tournamentUpdateError = '';
 
@@ -45,22 +49,6 @@ export class TournamentManagerComponent implements OnInit {
     // get the tournament
     var tournamentId = this.route.snapshot.paramMap.get('id');
     this.getTournament(tournamentId);
-    /*this.tournamentService.getTournament(tournamentId).subscribe(tournament => {
-      this.tournament = tournament;
-
-      this.tournament.matches.forEach(id => {
-        this.matchService.getMatch(id).subscribe(
-          match => {
-            this.matches.push(match);
-          },
-          error => console.log("Error: ", error),
-          () => {
-            // Number of matches
-            this.nbMatches = this.matches.length;
-          }
-        )
-      });
-    });*/
   }
 
   public ngOnInit(): void { }
@@ -110,15 +98,22 @@ export class TournamentManagerComponent implements OnInit {
   }
 
   private deleteTournament(): void {
-    this.tournamentService.deleteTournament(this.tournament._id)
-      .subscribe(res => {
-        if (!res) {
-          this.tournamentUpdateError = "Error when deleting the tournament";
-        }
-      });
+    this.confirmModal.open("Confirm you want to delete " + this.tournament.name).then(
+      () => {
+        this.tournamentService.deleteTournament(this.tournament._id)
+          .subscribe(res => {
+            if (res) {
+              this.tournamentUpdateSuccess = "Tournament successfully updated";
+            } else {
+              this.tournamentUpdateError = "Error when deleting the tournament";
+            }
+          });
 
-    // return to the general user panel
-    setTimeout(() => this.goBack(), 1000);
+        // return to the general user panel
+        setTimeout(() => this.goBack(), 1000);
+      },
+      () => this.tournamentUpdateError = "Tournament not deleted"
+    );
   }
 
   private receivePlayer1Message(player: Player): void {
@@ -149,7 +144,7 @@ export class TournamentManagerComponent implements OnInit {
 
       this.matchService.createMatch(newMatch)
         .subscribe(res => {
-                    if (res) {
+          if (res) {
             this.matchCreationSuccess = "Match added";
 
             // update the tournament data display

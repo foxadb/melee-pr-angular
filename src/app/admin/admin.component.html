@@ -24,7 +24,8 @@
   <hr class="buffer">
 
   <div class="row justify-content-center vdivide">
-    <div class="element col-md-6">
+    <div class="element col-md-8">
+      <h2>User list</h2>
       <table class="table table-striped">
         <thead>
           <th>Username</th>
@@ -44,7 +45,8 @@
       </table>
 
     </div>
-    <div class="element col-md-6">
+    <div class="element col-md-4">
+      <h2>Create a New User</h2>
       <form class="form form-center" (ngSubmit)="createUser()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="name">Username:</label>
@@ -74,3 +76,5 @@
     <div *ngIf="errorMessageBox" class="alert alert-danger top-buffer">{{ errorMessageBox }}</div>
   </div>
 </div>
+
+<app-confirm-modal></app-confirm-modal>
