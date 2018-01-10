@@ -62,7 +62,7 @@ export class SearchPlayerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  public searchPlayer(): void {
+  public searchPlayer(): Player {
     // reset error box
     this.error = '';
 
@@ -83,8 +83,12 @@ export class SearchPlayerComponent implements OnInit {
       // player not found
       this.error = "Player not found";
     }
+
     // stop loading animation
     this.loading = false;
+
+    // return the player
+    return player;
   }
 
 }

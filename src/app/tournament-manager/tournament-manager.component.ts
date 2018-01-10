@@ -11,6 +11,7 @@ import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 
 import { TournamentService } from '../services/tournament.service';
 import { MatchService } from '../services/match.service';
+import { SearchPlayerComponent } from '../search-player/search-player.component';
 
 @Component({
   selector: 'app-tournament-manager',
@@ -28,8 +29,9 @@ export class TournamentManagerComponent implements OnInit {
 
   // Adding a New Match
   private newMatchInput: any = {};
-  private player1: Player;
-  private player2: Player;
+
+  @ViewChild('searchPlayer1') searchPlayer1: SearchPlayerComponent;
+  @ViewChild('searchPlayer2') searchPlayer2: SearchPlayerComponent;
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
@@ -116,20 +118,13 @@ export class TournamentManagerComponent implements OnInit {
     );
   }
 
-  private receivePlayer1Message(player: Player): void {
-    this.player1 = player;
-  }
-
-  private receivePlayer2Message(player: Player): void {
-    this.player2 = player;
-  }
-
   private addMatch(): void {
     // reset status boxes
     this.matchCreationSuccess, this.matchCreationError = '';
 
-    var player1 = this.player1;
-    var player2 = this.player2;
+    var player1 = this.searchPlayer1.searchPlayer();
+    var player2 = this.searchPlayer2.searchPlayer();
+
     var score1 = (this.newMatchInput.score1 >= -1) ? this.newMatchInput.score1 : 0;
     var score2 = (this.newMatchInput.score2 >= -1) ? this.newMatchInput.score2 : 0;
 

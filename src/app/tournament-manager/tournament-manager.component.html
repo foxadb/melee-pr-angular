@@ -35,7 +35,7 @@
   <h2>Match Creator</h2>
   <div class="row buffer justify-content-center">
     <div class="col-sm-5">
-      <app-search-player (playerMessageEvent)="receivePlayer1Message($event)"></app-search-player>
+      <app-search-player #searchPlayer1></app-search-player>
     </div>
     <div class="col-sm-1">
       <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score1">
@@ -44,7 +44,7 @@
       <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score2">
     </div>
     <div class="col-sm-5">
-      <app-search-player (playerMessageEvent)="receivePlayer2Message($event)"></app-search-player>
+      <app-search-player #searchPlayer2></app-search-player>
     </div>
   </div>
   <div class="row buffer justify-content-center">
