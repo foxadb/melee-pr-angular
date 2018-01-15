@@ -15,15 +15,15 @@
     </div>
   </div>
   <div class="row justify-content-center top-buffer">
-    <div class="col-sm-2">
+    <div class="element col-md-2">
       <button arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
         <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
     </div>
-    <div class="col-sm-2">
+    <div class="element col-md-2">
       <button arial-label="Edit Tournament" class="btn btn-success" (click)="editTournament()">
         <i class="fa fa-pencil fa-lg"></i> Edit</button>
     </div>
-    <div class="col-sm-2">
+    <div class="element col-md-2">
       <button arial-label="Delete Tournament" class="btn btn-danger" (click)="deleteTournament()">
         <i class="fa fa-trash fa-lg"></i> Delete</button>
     </div>
@@ -34,16 +34,16 @@
 
   <h2>Match Creator</h2>
   <div class="row buffer justify-content-center">
-    <div class="col-sm-5">
+    <div class="element col-lg-4">
       <app-search-player #searchPlayer1></app-search-player>
     </div>
-    <div class="col-sm-1">
-      <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score1">
+    <div class="element col-lg-1">
+      <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score1" min="-1">
     </div>
-    <div class="col-sm-1">
-      <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score2">
+    <div class="element col-lg-1">
+      <input class="form-control" type="number" placeholder="0" [(ngModel)]="newMatchInput.score2" min="-1">
     </div>
-    <div class="col-sm-5">
+    <div class="element col-lg-4">
       <app-search-player #searchPlayer2></app-search-player>
     </div>
   </div>

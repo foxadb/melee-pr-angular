@@ -20,8 +20,7 @@ export class RankingComponent implements OnInit {
   constructor(
     private router: Router,
     private playerService: PlayerService) {
-    this.playerService.getPlayers().subscribe(players => {
-      players.sort((a, b) => b.score - a.score);
+    this.playerService.getPlayerRanking().subscribe(players => {
       this.players = players;
     });
   }

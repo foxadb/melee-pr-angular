@@ -72,7 +72,7 @@ export class PlayerManagerComponent implements OnInit {
     this.playerInput.mains = characters;
   }
 
-  private edit(): void {
+  private editPlayer(): void {
     // create the updated player for PUT request
     var player = {
       _id: this.player._id,
@@ -99,7 +99,7 @@ export class PlayerManagerComponent implements OnInit {
       });
   }
 
-  private delete(): void {
+  private deletePlayer(): void {
     this.confirmModal.open("Confirm you want to delete " + this.player.name).then(
       () => {
         // delete the player from database

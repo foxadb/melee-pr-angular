@@ -42,6 +42,19 @@ export class PlayerService {
       .catch(err => this.handleError(err));
   }
 
+  // Get Player Ranking from API
+  public getPlayerRanking(): Observable<Array<Player>> {
+    return this.http.get(`${this.playerUrl}/?ranking=true`)
+      .map(res => {
+        var players: Array<Player> = [];
+        res["data"].docs.forEach(player => {
+          players.push(new Player(player));
+        });
+        return players;
+      })
+      .catch(err => this.handleError(err));
+  }
+
   // Get a Player from API by ID
   public getPlayer(id: string): Observable<Player> {
     return this.http.get(`${this.playerUrl}/${id}`)

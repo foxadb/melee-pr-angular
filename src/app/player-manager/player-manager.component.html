@@ -2,15 +2,15 @@
   <h2 class="small-buffer">{{ player?.name }}</h2>
 
   <div class="row justify-content-center buffer">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="name">Name</label>
       <input id="name" class="form-control" type="text" placeholder="{{ player?.name }}" [(ngModel)]="playerInput.name">
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="name">Location</label>
       <input class="form-control" type="text" placeholder="{{ player?.location }}" [(ngModel)]="playerInput.location">
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <label for="score">Score</label>
       <input class="form-control" type="number" placeholder="{{ player?.score }}" [(ngModel)]="playerInput.score">
     </div>
@@ -26,11 +26,11 @@
         <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
     </div>
     <div class="element col-md-2">
-      <button arial-label="Edit" class="btn btn-success" (click)="edit()">
+      <button arial-label="Edit" class="btn btn-success" (click)="editPlayer()">
         <i class="fa fa-pencil fa-lg"></i> Edit</button>
     </div>
     <div class="element col-md-2">
-      <button arial-label="Delete" class="btn btn-danger" (click)="delete()">
+      <button arial-label="Delete" class="btn btn-danger" (click)="deletePlayer()">
         <i class="fa fa-trash fa-lg"></i> Delete</button>
     </div>
   </div>
