@@ -1,14 +1,20 @@
 import { AppPage } from './app.po';
 
-describe('melee-pr-angular App', () => {
+describe('App Root', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('window title test: Melee Power Ranking', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getTitle()).toEqual('Melee Power Ranking');
   });
+
+  it('type Arte in the player search bar', () => {
+    page.typeSearchedPlayer('Arte');
+    expect(page.getSearchedPlayer()).toEqual('Arte');
+  });
+
 });
