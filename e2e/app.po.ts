@@ -1,25 +1,21 @@
-import { browser, by, element, protractor } from 'protractor';
+import { browser, by, element, promise, protractor } from 'protractor';
 
 export class AppPage {
-  sleep(time: number) {
-    browser.sleep(time);
-  }
-  
-  navigateTo() {
+  navigateTo(): promise.Promise<any> {
     return browser.get('/');
   }
 
-  getTitle() {
+  getTitle(): promise.Promise<string> {
     return browser.getTitle();
   }
 
-  typeSearchedPlayer(name: string) {
+  typeSearchedPlayer(name: string): void {
     var searchPlayer = element(by.css('form input[type=text]'));
     searchPlayer.sendKeys(name);
     searchPlayer.sendKeys(protractor.Key.ENTER);
   }
 
-  getSearchedPlayer() {
+  getSearchedPlayer(): promise.Promise<string> {
     var searchPlayer = element(by.css('form input[type=text]'));
     return searchPlayer.getAttribute('value');
   }

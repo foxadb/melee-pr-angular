@@ -69,19 +69,24 @@ export class AdminComponent implements OnInit {
 
   // Create the user
   public createUser(): void {
+    // Reset the message box
+    this.successMessageBox = '';
+    this.errorMessageBox = '';
+
     var newUser = this.newUser();
     if (newUser) {
       this.userService.createUser(newUser)
-        .subscribe(res => {
-          this.successMessageBox, this.errorMessageBox = '';
-          if (res) {
-            this.successMessageBox = "User created!";
-            // refresh the user list
-            this.getUsers();
-          } else {
-            this.errorMessageBox = "Error when creating user";
-          }
-        });
+        .subscribe(
+        res => {
+          this.successMessageBox = "User created!";
+          
+          // refresh the user list
+          this.getUsers();
+        },
+        err => {
+          this.errorMessageBox = "Error when creating user";
+        }
+        );
     } else {
       this.errorMessageBox = "Wrong user parameters";
     }
@@ -93,14 +98,15 @@ export class AdminComponent implements OnInit {
       () => {
         this.userService.deleteUser(id).subscribe(
           res => {
-            if (res) {
-              this.successMessageBox = "User deleted";
-            } else {
-              this.errorMessageBox = "Error when deleting user";
-            }
+            this.successMessageBox = "User deleted";
+
             // update the user list
             this.getUsers();
-          });
+          },
+          err => {
+            this.errorMessageBox = "Error when deleting user";
+          }
+        );
       },
       () => this.errorMessageBox = "User not deleted"
     );
