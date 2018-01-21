@@ -1,10 +1,5 @@
-.buffer {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 .title {
-    padding: 20px;
+    padding: 20px 0 20px 0;
     font-family: 'Fjalla One', sans-serif;
     font-size: 60px;
     text-align: center;
@@ -16,18 +11,22 @@
     padding-right: 5px;
 }
 
+@media screen and (max-width: 792px) {
+    .title {
+        padding: 20px 18vw 20px 18vw;
+        font-size: 48px;
+    }
+}
+
+.search-player {
+    padding: 42px 0 42px 18px;
+}
+
 .players {
     margin: auto;
     list-style-type: none;
-    padding: 16px;
-    width: 75%;
-}
-
-@media screen and (max-width: 992px) {
-    .players {
-        padding: 0;
-        width: 100%;
-    }
+    padding: 20px 0 20px 0;
+    width: 90%;
 }
 
 .players li {
@@ -53,9 +52,24 @@
     top: -3px;
 }
 
+.players .badge {
+    display: inline-block;
+    color: white;
+    padding: 1em 2em 0 2em;
+    background-color: #607D8B;
+    background-color: #0078d7;
+    font-size: 18px;
+    line-height: 0;
+    position: relative;
+    top: -2px;
+    height: 2em;
+    margin-right: 1em;
+    border-radius: 4px 4px 4px 4px;
+}
+
 .players .name {
     padding: 0 1em 0 1em;
-    font-size: large;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -67,19 +81,43 @@
 .players .location {
     float: right;
     padding: 0.25em 2em 0 0;
+    font-size: 16px;
 }
 
-.players .badge {
-    display: inline-block;
-    color: white;
-    padding: 1em 2em 0 2em;
-    background-color: #607D8B;
-    background-color: #0078d7;
-    font-size: large;
-    line-height: 0;
-    position: relative;
-    top: -2px;
-    height: 2em;
-    margin-right: 1em;
-    border-radius: 4px 4px 4px 4px;
+@media screen and (max-width: 796px) {
+    .players li {
+        height: 2.5em;
+    }
+
+    .players .location {
+        padding: 0.25em 1em 0 0;
+    }
+
+    .players .badge {
+        padding: 1em 1em 0 1em;
+        margin-right: 0.5em;
+    }
+    
+    .players .name, .players .badge, .players .location {
+        font-size: 14px;
+    }
+
+    .players .mains img {
+        max-height: 20px;
+        max-width: auto;
+    }
+}
+
+@media screen and (max-width: 462px) {
+    .players .location {
+        display: none;
+    }
+
+    .players .mains {
+        left: 90%;
+    }
+
+    .players .mains .stock:not(:first-child) {
+        display: none;
+    }
 }
