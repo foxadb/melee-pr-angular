@@ -18,7 +18,7 @@ import { TournamentManagerComponent } from './tournament-manager/tournament-mana
 
 const routes: Routes = [
   // Home page (ranking)
-  { path: '', component: RankingComponent },
+  { path: 'ranking', component: RankingComponent },
 
   // Player stats page
   { path: 'player/:id', component: PlayerDetailComponent },
@@ -89,7 +89,7 @@ const routes: Routes = [
   },
 
   // Redirect other path to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'ranking' }
 ]
 
 @NgModule({
