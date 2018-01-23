@@ -1,10 +1,9 @@
 <div class="container">
-  <h1>Player Stats</h1>
+  <h1>{{ player?.name }}</h1>
 
   <table class="table">
     <thead>
       <tr>
-        <th>Name</th>
         <th>Main(s)</th>
         <th>Location</th>
         <th>Matches</th>
@@ -14,7 +13,6 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{ player?.name }}</td>
         <td>
           <div class="stock" *ngFor="let character of player?.mains">
             <img src="assets/stock_icons/{{ character }}.png">

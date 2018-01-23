@@ -12,9 +12,9 @@ describe('App Root: Ranking Page', () => {
     expect(page.getTitle()).toEqual('Melee Power Ranking');
   });
 
-  it('type Arte in the player search bar', () => {
-    page.typeSearchedPlayer('Arte');
-    expect(page.getSearchedPlayer()).toEqual('Arte');
+  it('type Bobi in the player search bar', () => {
+    page.typeSearchedPlayer('Bobi');
+    expect(page.getSearchedPlayer()).toEqual('Bobi');
   });
 
 });

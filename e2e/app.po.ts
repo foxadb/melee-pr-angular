@@ -1,6 +1,7 @@
 import { browser, by, element, promise, protractor } from 'protractor';
 
 export class AppPage {
+
   navigateTo(): promise.Promise<any> {
     return browser.get('/');
   }
@@ -10,13 +11,13 @@ export class AppPage {
   }
 
   typeSearchedPlayer(name: string): void {
-    var searchPlayer = element(by.css('form input[type=text]'));
+    const searchPlayer = element(by.css('form input[type=text]'));
     searchPlayer.sendKeys(name);
     searchPlayer.sendKeys(protractor.Key.ENTER);
   }
 
   getSearchedPlayer(): promise.Promise<string> {
-    var searchPlayer = element(by.css('form input[type=text]'));
+    const searchPlayer = element(by.css('form input[type=text]'));
     return searchPlayer.getAttribute('value');
   }
 
