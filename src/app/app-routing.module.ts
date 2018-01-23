@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './guards/auth.guard';
 
-import { RankingComponent } from './ranking/ranking.component'
-import { PlayerDetailComponent } from './player-detail/player-detail.component'
-import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component'
-import { ContactComponent } from './contact/contact.component'
+import { RankingComponent } from './ranking/ranking.component';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
+import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
@@ -40,7 +40,7 @@ const routes: Routes = [
     data: { expectedRole: 'admin' }
   },
 
-  // General manager panel 
+  // General manager panel
   {
     path: 'manager',
     component: ManagerComponent,
@@ -48,7 +48,7 @@ const routes: Routes = [
     data: { expectedRole: 'manager' }
   },
 
-  // Player Creator 
+  // Player Creator
   {
     path: 'manager/player',
     component: NewPlayerComponent,
@@ -72,7 +72,7 @@ const routes: Routes = [
     data: { expectedRole: 'manager' }
   },
 
-  // Tournament Creator 
+  // Tournament Creator
   {
     path: 'manager/tournament',
     component: NewTournamentComponent,
@@ -90,10 +90,10 @@ const routes: Routes = [
 
   // Redirect other path to home
   { path: '**', redirectTo: 'ranking' }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
