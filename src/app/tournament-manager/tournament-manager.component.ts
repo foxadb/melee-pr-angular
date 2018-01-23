@@ -7,7 +7,7 @@ import Match from '../models/match.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 import { TournamentService } from '../services/tournament.service';
 import { MatchService } from '../services/match.service';
@@ -49,7 +49,7 @@ export class TournamentManagerComponent implements OnInit {
     private matchService: MatchService
   ) {
     // get the tournament
-    var tournamentId = this.route.snapshot.paramMap.get('id');
+    const tournamentId = this.route.snapshot.paramMap.get('id');
     this.getTournament(tournamentId);
   }
 
@@ -61,17 +61,17 @@ export class TournamentManagerComponent implements OnInit {
 
       this.matches = [];
 
-      this.tournament.matches.forEach(id => {
-        this.matchService.getMatch(id).subscribe(
+      this.tournament.matches.forEach(matchId => {
+        this.matchService.getMatch(matchId).subscribe(
           match => {
             this.matches.push(match);
           },
-          error => console.log("Error: ", error),
+          error => console.log('Error: ', error),
           () => {
             // Number of matches
             this.nbMatches = this.matches.length;
           }
-        )
+        );
       });
     });
   }
@@ -83,53 +83,72 @@ export class TournamentManagerComponent implements OnInit {
 
   private editTournament(): void {
     // create the updated tournament for PUT request
-    var tournament = {
+    const tournament = {
       _id: this.tournament._id,
       name: this.tournamentInput.name,
       organiser: this.tournamentInput.organiser,
+      date: this.tournamentInput.date,
       location: this.tournamentInput.location
     };
 
-    // update the match
+    // update the tournament
     this.tournamentService.updateTournament(tournament)
       .subscribe(res => {
-        if (!res) {
-          this.tournamentUpdateError = "Error when updating the tournament";
+        // reset message boxes
+        this.tournamentUpdateSuccess = '';
+        this.tournamentUpdateError = '';
+
+        if (res) {
+          this.tournamentUpdateSuccess = 'Tournament updated!';
+
+          // return to the general user panel
+          setTimeout(() => this.goBack(), 1000);
+        } else {
+          this.tournamentUpdateError = 'Error when updating the tournament';
         }
       });
   }
 
   private deleteTournament(): void {
-    this.confirmModal.open("Confirm you want to delete " + this.tournament.name).then(
+    this.confirmModal.open('Confirm you want to delete ' + this.tournament.name).then(
       () => {
+        // delete the player from database
         this.tournamentService.deleteTournament(this.tournament._id)
           .subscribe(res => {
+            // reset message boxes
+            this.tournamentUpdateSuccess = '';
+            this.tournamentUpdateError = '';
+
             if (res) {
-              this.tournamentUpdateSuccess = "Tournament successfully updated";
+              this.tournamentUpdateSuccess = 'Tournament deleted!';
+
+              // return to the general user panel
+              setTimeout(() => this.goBack(), 1000);
             } else {
-              this.tournamentUpdateError = "Error when deleting the tournament";
+              this.tournamentUpdateError = 'Error when deleting the tournament';
             }
           });
 
         // return to the general user panel
         setTimeout(() => this.goBack(), 1000);
       },
-      () => this.tournamentUpdateError = "Tournament not deleted"
+      () => this.tournamentUpdateError = 'Tournament not deleted'
     );
+
   }
 
   private addMatch(): void {
     // reset status boxes
-    this.matchCreationSuccess, this.matchCreationError = '';
+    this.matchCreationSuccess = '';
+    this.matchCreationError = '';
 
-    var player1 = this.searchPlayer1.searchPlayer();
-    var player2 = this.searchPlayer2.searchPlayer();
-
-    var score1 = (this.newMatchInput.score1 >= -1) ? this.newMatchInput.score1 : 0;
-    var score2 = (this.newMatchInput.score2 >= -1) ? this.newMatchInput.score2 : 0;
+    const player1 = this.searchPlayer1.searchPlayer();
+    const player2 = this.searchPlayer2.searchPlayer();
+    const score1 = (this.newMatchInput.score1 >= -1) ? this.newMatchInput.score1 : 0;
+    const score2 = (this.newMatchInput.score2 >= -1) ? this.newMatchInput.score2 : 0;
 
     if (player1 && player2) {
-      var newMatch = {
+      const newMatch = {
         player1: player1,
         player2: player2,
         score1: score1,
@@ -140,16 +159,16 @@ export class TournamentManagerComponent implements OnInit {
       this.matchService.createMatch(newMatch)
         .subscribe(res => {
           if (res) {
-            this.matchCreationSuccess = "Match added";
+            this.matchCreationSuccess = 'Match added';
 
             // update the tournament data display
             this.getTournament(this.tournament._id);
           } else {
-            this.matchCreationError = "Error when creating match";
+            this.matchCreationError = 'Error when creating match';
           }
         });
     } else {
-      this.matchCreationError = "Wrong parameters";
+      this.matchCreationError = 'Wrong parameters';
     }
   }
 

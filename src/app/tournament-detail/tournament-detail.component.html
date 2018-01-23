@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th>Organiser</th>
+        <th>Date</th>
         <th>Location</th>
         <th>Matches</th>
       </tr>
@@ -12,6 +13,7 @@
     <tbody>
       <tr>
         <td>{{ tournament?.organiser }}</td>
+        <td>{{ tournament?.date | date: 'yyyy-MM-dd' }}</td>
         <td>{{ tournament?.location }}</td>
         <td>{{ nbMatches }}</td>
       </tr>

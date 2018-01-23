@@ -21,7 +21,7 @@ export class TournamentDetailComponent implements OnInit {
   private tournament: Tournament;
   private matches: Array<Match> = [];
 
-  private nbMatches: number = 0;
+  private nbMatches = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class TournamentDetailComponent implements OnInit {
     private matchService: MatchService
   ) {
     // get the tournament id
-    var tournamentId = this.route.snapshot.paramMap.get('id');
+    const tournamentId = this.route.snapshot.paramMap.get('id');
 
     this.tournamentService.getTournament(tournamentId).subscribe(tournament => {
       this.tournament = tournament;
@@ -41,12 +41,12 @@ export class TournamentDetailComponent implements OnInit {
           match => {
             this.matches.push(match);
           },
-          error => console.log("Error: ", error),
+          error => console.log('Error: ', error),
           () => {
             // Number of matches
             this.nbMatches = this.matches.length;
           }
-        )
+        );
       });
     });
   }

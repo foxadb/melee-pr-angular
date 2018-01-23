@@ -18,11 +18,11 @@ export class TournamentService {
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   public options(): any {
-    var headers = new HttpHeaders();
+    let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer ' + this.auth.getToken());
     headers = headers.set('Content-Type', 'application/json');
 
-    var options = {
+    const options = {
       headers: headers
     };
 
@@ -33,8 +33,8 @@ export class TournamentService {
   public getTournaments(): Observable<Array<Tournament>> {
     return this.http.get(this.tournamentUrl)
       .map(res => {
-        var tournaments: Array<Tournament> = [];
-        res["data"].docs.forEach(tournament => {
+        const tournaments: Array<Tournament> = [];
+        res['data'].docs.forEach(tournament => {
           tournaments.push(new Tournament(tournament));
         });
         return tournaments;
@@ -46,7 +46,7 @@ export class TournamentService {
   public getTournament(id: string): Observable<Tournament> {
     return this.http.get(`${this.tournamentUrl}/${id}`)
       .map(res => {
-        return new Tournament(res["data"]);
+        return new Tournament(res['data']);
       })
       .catch(err => this.handleError(err));
   }

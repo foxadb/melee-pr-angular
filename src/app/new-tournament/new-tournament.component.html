@@ -6,6 +6,11 @@
         #name="ngModel" required>
     </div>
     <div class="form-group">
+      <label for="organiser">Date:</label>
+      <input type="date" class="form-control" id="date" placeholder="Enter the Date" name="date" [(ngModel)]="input.date" #organiser="ngModel"
+        required>
+    </div>
+    <div class="form-group">
       <label for="organiser">Organiser:</label>
       <input type="text" class="form-control" id="organiser" placeholder="Enter the Organiser Name" name="organiser" [(ngModel)]="input.organiser"
         #organiser="ngModel" required>

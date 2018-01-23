@@ -24,17 +24,19 @@ export class NewTournamentComponent implements OnInit {
     private tournamentService: TournamentService
   ) { }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void { }
 
   // Collect user input to create the tournament body parameter for creation
   public newTournament(): any {
-    var name = this.input.name;
-    var organiser = this.input.organiser;
-    var location = this.input.location;
+    const name = this.input.name;
+    const date = this.input.date;
+    const organiser = this.input.organiser;
+    const location = this.input.location;
 
     if (name && organiser && location) {
-      var tournament = {
+      const tournament = {
         name: name,
+        date: date,
         organiser: organiser,
         location: location
       };
@@ -47,22 +49,23 @@ export class NewTournamentComponent implements OnInit {
 
   // Create the tournament
   public createTournament(): void {
-    var newTournament = this.newTournament();
+    const newTournament = this.newTournament();
     if (newTournament) {
       this.tournamentService.createTournament(newTournament)
         .subscribe(res => {
-          this.creationSuccess, this.creationError = '';
+          this.creationSuccess = '';
+          this.creationError = '';
           if (res) {
-            this.creationSuccess = "Tournament created!";
+            this.creationSuccess = 'Tournament created!';
 
             // refresh the tournament list
             setTimeout(() => this.goBack(), 1000);
           } else {
-            this.creationError = "Error when creating tournament";
+            this.creationError = 'Error when creating tournament';
           }
         });
     } else {
-      this.creationError = "Wrong tournament parameters";
+      this.creationError = 'Wrong tournament parameters';
     }
   }
 
