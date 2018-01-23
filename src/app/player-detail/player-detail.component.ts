@@ -19,7 +19,7 @@ export class PlayerDetailComponent implements OnInit {
   private player: Player;
   private matches: Array<Match> = [];
 
-  private nbMatches: number = 0;
+  private nbMatches = 0;
   private ratio: any = 0;
 
   constructor(
@@ -35,7 +35,7 @@ export class PlayerDetailComponent implements OnInit {
     };
 
     // get the player id
-    var playerId = this.route.snapshot.paramMap.get('id');
+    const playerId = this.route.snapshot.paramMap.get('id');
 
     this.playerService.getPlayer(playerId).subscribe(player => {
       this.player = player;
@@ -46,7 +46,7 @@ export class PlayerDetailComponent implements OnInit {
             match.correctPlayerOrder(player);
             this.matches.push(match);
           },
-          error => console.log("Error: ", error),
+          error => console.log('Error: ', error),
           () => {
             // Number of matches
             this.nbMatches = this.matches.length;
@@ -54,7 +54,7 @@ export class PlayerDetailComponent implements OnInit {
             // Compute the wins loss ratio and rounding
             this.ratio = this.computeRatio();
           }
-        )
+        );
       });
     });
   }
@@ -85,7 +85,7 @@ export class PlayerDetailComponent implements OnInit {
     });
 
     // Compute the wins loss ratio
-    if (loss == 0) {
+    if (loss === 0) {
       return 'inf';
     } else {
       return Math.round(wins / loss * 100) / 100;

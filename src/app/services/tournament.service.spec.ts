@@ -12,4 +12,5 @@ describe('TournamentService', () => {
   it('should be created', inject([TournamentService], (service: TournamentService) => {
     expect(service).toBeTruthy();
   }));
+
 });

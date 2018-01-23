@@ -27,7 +27,7 @@ class Player {
     }
 
     public equals(player: Player): boolean {
-        return (this._id == player._id);
+        return (this._id === player._id);
     }
 
     public hasWon(match: Match): boolean {

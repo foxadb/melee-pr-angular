@@ -22,4 +22,5 @@ describe('SearchPlayerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

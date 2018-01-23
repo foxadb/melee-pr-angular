@@ -12,7 +12,7 @@ export class AuthenticationService {
 
     private api_url = 'http://localhost:3000';
     private loginUrl = `${this.api_url}/api/user/login`;
-    
+
     private jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(private http: Http) {}
@@ -42,11 +42,11 @@ export class AuthenticationService {
     }
 
     public login(username: string, password: string): Observable<boolean> {
-        let body = { username: username, password: password };
+        const body = { username: username, password: password };
         return this.http.post(this.loginUrl, body)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
+                const token = response.json() && response.json().token;
 
                 if (token) {
                     // store username and jwt token in local storage to keep user logged in between page refreshes

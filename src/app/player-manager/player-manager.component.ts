@@ -6,7 +6,7 @@ import Match from '../models/match.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
@@ -20,7 +20,7 @@ export class PlayerManagerComponent implements OnInit {
 
   private player: Player;
   private matches: Array<Match> = [];
-  private mains: Array<string>
+  private mains: Array<string>;
 
   private playerInput: any = {};
 
@@ -39,7 +39,7 @@ export class PlayerManagerComponent implements OnInit {
     private matchService: MatchService
   ) {
     // get the player id
-    var playerId = this.route.snapshot.paramMap.get('id');
+    const playerId = this.route.snapshot.paramMap.get('id');
 
     this.playerService.getPlayer(playerId).subscribe(player => {
       this.player = player;
@@ -51,12 +51,12 @@ export class PlayerManagerComponent implements OnInit {
             match.correctPlayerOrder(this.player);
             this.matches.push(match);
           },
-          error => console.log("Error: ", error),
+          error => console.log('Error: ', error),
           () => {
             // Number of matches
             this.nbMatches = this.matches.length;
           }
-        )
+        );
       });
     });
   }
@@ -74,7 +74,7 @@ export class PlayerManagerComponent implements OnInit {
 
   private editPlayer(): void {
     // create the updated player for PUT request
-    var player = {
+    const player = {
       _id: this.player._id,
       name: this.playerInput.name,
       location: this.playerInput.location,
@@ -82,46 +82,48 @@ export class PlayerManagerComponent implements OnInit {
       mains: this.playerInput.mains
     };
 
-    // update the match
+    // update the player
     this.playerService.updatePlayer(player)
       .subscribe(res => {
         // reset message boxes
-        this.playerUpdateSuccess, this.playerUpdateError = '';
+        this.playerUpdateSuccess = '';
+        this.playerUpdateError = '';
 
         if (res) {
-          this.playerUpdateSuccess = "Player updated!";
+          this.playerUpdateSuccess = 'Player updated!';
 
           // return to the general user panel
           setTimeout(() => this.goBack(), 1000);
         } else {
-          this.playerUpdateError = "Error when updating the match";
+          this.playerUpdateError = 'Error when updating the match';
         }
       });
   }
 
   private deletePlayer(): void {
-    this.confirmModal.open("Confirm you want to delete " + this.player.name).then(
+    this.confirmModal.open('Confirm you want to delete ' + this.player.name).then(
       () => {
         // delete the player from database
         this.playerService.deletePlayer(this.player._id)
           .subscribe(res => {
             // reset message boxes
-            this.playerUpdateSuccess, this.playerUpdateError = '';
+            this.playerUpdateSuccess = '';
+            this.playerUpdateError = '';
 
             if (res) {
-              this.playerUpdateSuccess = "Player deleted!";
+              this.playerUpdateSuccess = 'Player deleted!';
 
               // return to the general user panel
               setTimeout(() => this.goBack(), 1000);
             } else {
-              this.playerUpdateError = "Error when deleting the match";
+              this.playerUpdateError = 'Error when deleting the match';
             }
           });
 
         // return to the general user panel
         setTimeout(() => this.goBack(), 1000);
       },
-      () => this.playerUpdateError = "Player not deleted"
+      () => this.playerUpdateError = 'Player not deleted'
     );
   }
 

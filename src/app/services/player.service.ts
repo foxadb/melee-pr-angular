@@ -18,11 +18,11 @@ export class PlayerService {
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   public options(): any {
-    var headers = new HttpHeaders();
+    let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer ' + this.auth.getToken());
     headers = headers.set('Content-Type', 'application/json');
 
-    var options = {
+    const options = {
       headers: headers
     };
 
@@ -33,8 +33,8 @@ export class PlayerService {
   public getPlayers(): Observable<Array<Player>> {
     return this.http.get(this.playerUrl)
       .map(res => {
-        var players: Array<Player> = [];
-        res["data"].docs.forEach(player => {
+        const players: Array<Player> = [];
+        res['data'].docs.forEach(player => {
           players.push(new Player(player));
         });
         return players;
@@ -46,8 +46,8 @@ export class PlayerService {
   public getPlayerRanking(): Observable<Array<Player>> {
     return this.http.get(`${this.playerUrl}/?ranking=true`)
       .map(res => {
-        var players: Array<Player> = [];
-        res["data"].docs.forEach(player => {
+        const players: Array<Player> = [];
+        res['data'].docs.forEach(player => {
           players.push(new Player(player));
         });
         return players;
@@ -59,7 +59,7 @@ export class PlayerService {
   public getPlayer(id: string): Observable<Player> {
     return this.http.get(`${this.playerUrl}/${id}`)
       .map(res => {
-        return new Player(res["data"]);
+        return new Player(res['data']);
       })
       .catch(err => this.handleError(err));
   }

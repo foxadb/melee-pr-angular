@@ -15,7 +15,7 @@ export class CharacterRosterComponent implements OnInit {
 
   // Character output
   @Output() characterMessageEvent = new EventEmitter<Array<string>>();
-  
+
   constructor() { }
 
   public ngOnInit(): void {
@@ -27,10 +27,10 @@ export class CharacterRosterComponent implements OnInit {
 
   private addMain(character: string): void {
     // search if main already exist
-    var index = this.mains.indexOf(character, 0);
+    const index = this.mains.indexOf(character, 0);
 
     // if not found, add it to the list
-    if (index == -1) {
+    if (index === -1) {
       this.mains.push(character);
 
       // send the characters to parent
@@ -40,7 +40,7 @@ export class CharacterRosterComponent implements OnInit {
 
   private removeMain(character: string): void {
     // find the character
-    var index = this.mains.indexOf(character, 0);
+    const index = this.mains.indexOf(character, 0);
 
     // remove it if found
     if (index > -1) {

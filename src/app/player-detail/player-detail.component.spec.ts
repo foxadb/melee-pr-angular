@@ -22,4 +22,5 @@ describe('PlayerDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -82,7 +82,7 @@ export class ManagerComponent implements OnInit {
     this.filteredPlayers = this.searchPlayerCtrl.valueChanges.pipe(
       startWith(''),
       map(val => this.filter(val))
-    )
+    );
   }
 
   private receivePlayerMessage(player: Player): void {
@@ -96,14 +96,14 @@ export class ManagerComponent implements OnInit {
   }
 
   public newMatch(): any {
-    var player1 = this.player;
-    var player2 = this.players.find(player => player.name == this.matchInput.opponent);
-    var score1 = (this.matchInput.playerScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.playerScore : 0;
-    var score2 = (this.matchInput.opponentScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.opponentScore : 0;
-    var tournament = this.tournaments.find(tournament => tournament.name == this.matchInput.tournament);
+    const player1 = this.player;
+    const player2 = this.players.find(player => player.name === this.matchInput.opponent);
+    const score1 = (this.matchInput.playerScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.playerScore : 0;
+    const score2 = (this.matchInput.opponentScore >= -1 && this.matchInput.playerScore < 10) ? this.matchInput.opponentScore : 0;
+    const tournament = this.tournaments.find(t => t.name === this.matchInput.tournament);
 
     if (player1 && player2 && tournament) {
-      var match = {
+      const match = {
         player1: player1._id,
         player2: player2._id,
         score1: score1,
@@ -118,22 +118,25 @@ export class ManagerComponent implements OnInit {
   }
 
   public createMatch(): void {
-    var newMatch = this.newMatch();
+    const newMatch = this.newMatch();
+
     if (newMatch) {
       this.matchService.createMatch(newMatch)
         .subscribe(res => {
-          this.matchCreationSuccess, this.matchCreationError = '';
+          this.matchCreationSuccess = '';
+          this.matchCreationError = '';
+
           if (res) {
-            this.matchCreationSuccess = "Match created!";
+            this.matchCreationSuccess = 'Match created!';
 
             // refresh the match list
             this.onSearch(this.player.name);
           } else {
-            this.matchCreationError = "Error when creating match";
+            this.matchCreationError = 'Error when creating match';
           }
         });
     } else {
-      this.matchCreationError = "Wrong match parameters";
+      this.matchCreationError = 'Wrong match parameters';
     }
   }
 
@@ -153,11 +156,11 @@ export class ManagerComponent implements OnInit {
     this.playerMatches = [];
 
     // find the player in the list
-    let player = this.players.find(player => player.name == playerName);
+    const player = this.players.find(p => p.name === playerName);
 
     if (player) {
-      this.playerService.getPlayer(player._id).subscribe(player => {
-        this.player = player;
+      this.playerService.getPlayer(player._id).subscribe(p => {
+        this.player = p;
 
         this.player.matches.forEach(id => {
           this.matchService.getMatch(id).subscribe(match => {
@@ -171,7 +174,7 @@ export class ManagerComponent implements OnInit {
       this.loading = false;
     } else {
       // player not found
-      this.playerNotFoundError = "Player not found";
+      this.playerNotFoundError = 'Player not found';
       this.loading = false;
     }
   }

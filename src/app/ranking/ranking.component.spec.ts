@@ -22,4 +22,5 @@ describe('RankingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

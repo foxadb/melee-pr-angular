@@ -18,11 +18,11 @@ export class MatchService {
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   public options(): any {
-    var headers = new HttpHeaders();
+    let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer ' + this.auth.getToken());
     headers = headers.set('Content-Type', 'application/json');
 
-    var options = {
+    const options = {
       headers: headers
     };
 
@@ -33,8 +33,8 @@ export class MatchService {
   public getMatches(): Observable<Array<Match>> {
     return this.http.get(this.matchUrl)
       .map(res => {
-        var matches: Array<Match> = [];
-        res["data"].docs.forEach(match => {
+        const matches: Array<Match> = [];
+        res['data'].docs.forEach(match => {
           matches.push(new Match(match));
         });
         return matches;
@@ -46,7 +46,7 @@ export class MatchService {
   public getMatch(id: string): Observable<Match> {
     return this.http.get(`${this.matchUrl}/${id}`)
       .map(res => {
-        return new Match(res["data"]);
+        return new Match(res['data']);
       })
       .catch(err => this.handleError(err));
   }
@@ -59,7 +59,7 @@ export class MatchService {
       })
       .catch(err => this.handleError(err));
   }
- 
+
   // Update a Match to API
   public updateMatch(match: any): Observable<boolean> {
     return this.http.put(this.matchUrl, match, this.options())
@@ -68,7 +68,7 @@ export class MatchService {
       })
       .catch(err => this.handleError(err));
   }
-  
+
   // Delete a Match from API
   public deleteMatch(id: any): Observable<boolean> {
     return this.http.delete(`${this.matchUrl}/${id}`, this.options())

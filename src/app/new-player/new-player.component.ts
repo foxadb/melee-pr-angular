@@ -24,7 +24,7 @@ export class NewPlayerComponent implements OnInit {
     private playerService: PlayerService
   ) { }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void { }
 
   private receiveCharacterMessage(characters: Array<string>): void {
     this.input.mains = characters;
@@ -32,13 +32,13 @@ export class NewPlayerComponent implements OnInit {
 
   // Collect user input to create the player body parameter for creation
   private newPlayer(): any {
-    var name = this.input.name;
-    var location = this.input.location;
-    var score = (this.input.score != null) ? this.input.score : 1000;
-    var mains = this.input.mains;
+    const name = this.input.name;
+    const location = this.input.location;
+    const score = (this.input.score != null) ? this.input.score : 1000;
+    const mains = this.input.mains;
 
     if (name && location && score && mains) {
-      var player = {
+      const player = {
         name: name,
         location: location,
         score: score,
@@ -53,22 +53,24 @@ export class NewPlayerComponent implements OnInit {
 
   // Create the player
   private createPlayer(): void {
-    var newPlayer = this.newPlayer();
+    const newPlayer = this.newPlayer();
     if (newPlayer) {
       this.playerService.createPlayer(newPlayer)
         .subscribe(res => {
-          this.creationSuccess, this.creationError = '';
+          this.creationSuccess = '';
+          this.creationError = '';
+
           if (res) {
-            this.creationSuccess = "Player created!";
+            this.creationSuccess = 'Player created!';
 
             // refresh the player list
             setTimeout(() => this.goBack(), 1000);
           } else {
-            this.creationError = "Error when creating player";
+            this.creationError = 'Error when creating player';
           }
         });
     } else {
-      this.creationError = "Wrong player parameters";
+      this.creationError = 'Wrong player parameters';
     }
   }
 

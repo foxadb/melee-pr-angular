@@ -22,4 +22,5 @@ describe('SearchTournamentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

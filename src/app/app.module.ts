@@ -80,4 +80,4 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -6,7 +6,7 @@ import Match from '../models/match.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 import { PlayerService } from '../services/player.service';
 import { MatchService } from '../services/match.service';
@@ -33,7 +33,7 @@ export class MatchManagerComponent implements OnInit {
     private matchService: MatchService
   ) {
     // get the match id
-    var matchId = this.route.snapshot.paramMap.get('id');
+    const matchId = this.route.snapshot.paramMap.get('id');
 
     // retrieve the match from database
     this.matchService.getMatch(matchId).subscribe(match => {
@@ -50,7 +50,7 @@ export class MatchManagerComponent implements OnInit {
 
   public edit(): void {
     // create the updated match for PUT request
-    var match = {
+    const match = {
       _id: this.match._id,
       score1: (this.matchInput.score1 >= -1) ? this.matchInput.score1 : 0,
       score2: (this.matchInput.score2 >= -1) ? this.matchInput.score2 : 0,
@@ -60,7 +60,7 @@ export class MatchManagerComponent implements OnInit {
     this.matchService.updateMatch(match)
       .subscribe(res => {
         if (!res) {
-          this.matchUpdateError = "Error when updating the match";
+          this.matchUpdateError = 'Error when updating the match';
         }
       });
 
@@ -69,20 +69,20 @@ export class MatchManagerComponent implements OnInit {
   }
 
   public delete(): void {
-    this.confirmModal.open("Confirm you want to delete this match").then(
+    this.confirmModal.open('Confirm you want to delete this match').then(
       () => {
         // delete the match
         this.matchService.deleteMatch(this.match._id)
           .subscribe(res => {
             if (!res) {
-              this.matchUpdateError = "Error when deleting the match";
+              this.matchUpdateError = 'Error when deleting the match';
             }
           });
 
         // return to the general user panel
         this.goback();
       },
-      () => this.matchUpdateError = "Match not deleted"
+      () => this.matchUpdateError = 'Match not deleted'
     );
   }
 

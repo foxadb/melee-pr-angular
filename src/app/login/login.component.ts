@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       error => {
         // login failed
         if (error === 'Unauthorized') {
-          this.error = "Wrong username or password";
+          this.error = 'Wrong username or password';
           this.loading = false;
         }
       }

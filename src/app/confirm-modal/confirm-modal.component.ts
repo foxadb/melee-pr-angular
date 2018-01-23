@@ -23,8 +23,8 @@ export class ConfirmModalComponent implements OnInit {
 
   public open(message: string): Promise<boolean> {
     this.modalBody = message;
-    
-    var promise = new Promise<boolean>((resolve, reject) => {
+
+    const promise = new Promise<boolean>((resolve, reject) => {
       this.modalService.open(this.content).result.then(
       (result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -34,7 +34,7 @@ export class ConfirmModalComponent implements OnInit {
         reject(false);
       });
     });
-    
+
     return promise;
   }
 

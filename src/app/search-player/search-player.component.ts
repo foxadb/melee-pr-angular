@@ -44,7 +44,7 @@ export class SearchPlayerComponent implements OnInit {
           player.name.toLowerCase().indexOf(term.toLowerCase()) > -1
         )
           // only 10 results
-          .slice(0, 10));
+          .slice(0, 10))
 
   formatter = (x: { name: string }) => x.name;
 
@@ -70,10 +70,10 @@ export class SearchPlayerComponent implements OnInit {
     this.loading = true;
 
     // find the player
-    var player = this.players.find(player =>
-      player.name == this.player.name ||
+    const player = this.players.find(p =>
+      p.name === this.player.name ||
       // if autocompletion is not used
-      player.name == this.player
+      p.name === this.player
     );
 
     if (player) {
@@ -81,7 +81,7 @@ export class SearchPlayerComponent implements OnInit {
       this.playerMessageEvent.emit(player);
     } else {
       // player not found
-      this.error = "Player not found";
+      this.error = 'Player not found';
     }
 
     // stop loading animation

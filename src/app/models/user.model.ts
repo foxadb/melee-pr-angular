@@ -1,4 +1,5 @@
 class User {
+
     _id: string;
     username: string;
     password: string;
@@ -12,7 +13,7 @@ class User {
     }
 
     public isAdmin(): boolean {
-        return this.role == 'admin';
+        return this.role === 'admin';
     }
 
 }

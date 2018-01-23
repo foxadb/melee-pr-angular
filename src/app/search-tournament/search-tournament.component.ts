@@ -44,7 +44,7 @@ export class SearchTournamentComponent implements OnInit {
           tournament.name.toLowerCase().indexOf(term.toLowerCase()) > -1
         )
           // only 10 results
-          .slice(0, 10));
+          .slice(0, 10))
 
   formatter = (x: { name: string }) => x.name;
 
@@ -70,10 +70,10 @@ export class SearchTournamentComponent implements OnInit {
     this.loading = true;
 
     // find the tournament
-    var tournament = this.tournaments.find(tournament =>
-      tournament.name == this.tournament.name ||
+    const tournament = this.tournaments.find(t =>
+      t.name === this.tournament.name ||
       // if autocompletion is not used
-      tournament.name == this.tournament
+      t.name === this.tournament
     );
 
     if (tournament) {
@@ -81,7 +81,7 @@ export class SearchTournamentComponent implements OnInit {
       this.tournamentMessageEvent.emit(tournament);
     } else {
       // tournament not found
-      this.error = "Tournament not found";
+      this.error = 'Tournament not found';
     }
     // stop loading animation
     this.loading = false;

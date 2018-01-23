@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 import User from '../models/user.model';
 
@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
-  private confirm: boolean = false;
+  private confirm = false;
 
   private successMessageBox: string;
   private errorMessageBox: string;
@@ -50,12 +50,12 @@ export class AdminComponent implements OnInit {
 
   // Collect user input to create the user body parameter for creation
   public newUser(): any {
-    var username = this.input.username;
-    var password = this.input.password;
-    var role = this.input.role;
+    const username = this.input.username;
+    const password = this.input.password;
+    const role = this.input.role;
 
     if (username && password && role) {
-      var user = {
+      const user = {
         username: username,
         password: password,
         role: role
@@ -73,42 +73,42 @@ export class AdminComponent implements OnInit {
     this.successMessageBox = '';
     this.errorMessageBox = '';
 
-    var newUser = this.newUser();
+    const newUser = this.newUser();
     if (newUser) {
       this.userService.createUser(newUser)
         .subscribe(
         res => {
-          this.successMessageBox = "User created!";
-          
+          this.successMessageBox = 'User created!';
+
           // refresh the user list
           this.getUsers();
         },
         err => {
-          this.errorMessageBox = "Error when creating user";
+          this.errorMessageBox = 'Error when creating user';
         }
         );
     } else {
-      this.errorMessageBox = "Wrong user parameters";
+      this.errorMessageBox = 'Wrong user parameters';
     }
   }
 
   // Delete the user
   private deleteUser(id: string): void {
-    this.confirmModal.open("Confirm you want to delete this user").then(
+    this.confirmModal.open('Confirm you want to delete this user').then(
       () => {
         this.userService.deleteUser(id).subscribe(
           res => {
-            this.successMessageBox = "User deleted";
+            this.successMessageBox = 'User deleted';
 
             // update the user list
             this.getUsers();
           },
           err => {
-            this.errorMessageBox = "Error when deleting user";
+            this.errorMessageBox = 'Error when deleting user';
           }
         );
       },
-      () => this.errorMessageBox = "User not deleted"
+      () => this.errorMessageBox = 'User not deleted'
     );
   }
 

@@ -21,7 +21,7 @@ class Match {
 
     // Ensure player is player1 (swap player 1 and 2 if not the case)
     correctPlayerOrder(player: Player): void {
-        if (this.player2._id === player._id) {    
+        if (this.player2._id === player._id) {
             // Swap player 1 and 2
             this.player2 = [this.player1, this.player1 = this.player2][0];
 

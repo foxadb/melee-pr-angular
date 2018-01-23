@@ -32,9 +32,9 @@ export class AuthGuard implements CanActivate {
   }
 
   public checkPermission(tokenPayload: any, expectedRole: any): boolean {
-    let role = tokenPayload.role;
+    const role = tokenPayload.role;
     // allow admin to access the entire app
-    return ((role == 'admin') || role == expectedRole);
+    return ((role === 'admin') || role === expectedRole);
   }
 
 }
