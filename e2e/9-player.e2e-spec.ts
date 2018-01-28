@@ -20,4 +20,8 @@ describe('Player Details Page:', () => {
         expect(page.getPlayerName()).toEqual('Bobi');
     });
 
+    it('check player opponent', () => {
+        expect(page.clickOpponentButton()).toBeTruthy();
+    });
+
 });

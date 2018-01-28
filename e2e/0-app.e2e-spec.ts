@@ -7,8 +7,11 @@ describe('App Root:', () => {
     page = new AppPage();
   });
 
-  it('window title test: Melee Power Ranking', () => {
+  it('navigate to', () => {
     page.navigateTo();
+  });
+
+  it('window title test: Melee Power Ranking', () => {
     expect(page.getTitle()).toEqual('Melee Power Ranking');
   });
 

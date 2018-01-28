@@ -7,8 +7,11 @@ describe('Contact Page:', () => {
     page = new ContactPage();
   });
 
-  it('check author names', () => {
+  it('navigate to', () => {
     page.navigateTo();
+  });
+
+  it('check author names', () => {
     expect(page.authorName(0)).toEqual('Samy Amraoui');
     expect(page.authorName(1)).toEqual('Julien Bernard');
     expect(page.authorName(2)).toEqual('Julien Camus');

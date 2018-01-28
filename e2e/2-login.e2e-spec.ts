@@ -7,8 +7,11 @@ describe('Login Page:', () => {
         page = new LoginPage();
     });
 
-    it('login fail', () => {
+    it('navigate to', () => {
         page.navigateTo();
+    });
+
+    it('login fail', () => {
         expect(page.typeUsername('wrongadmin')).toEqual('wrongadmin');
         expect(page.typePassword('wrongpassword')).toEqual('wrongpassword');
         expect(page.login()).toBeFalsy();

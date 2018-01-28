@@ -22,15 +22,15 @@
   </div>
   <div class="row justify-content-center top-buffer">
     <div class="element col-md-2">
-      <button arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
+      <button id="cancelButton" arial-label="Cancel" class="btn btn-primary" (click)="goBack()">
         <i class="fa fa-arrow-left fa-lg"></i> Cancel</button>
     </div>
     <div class="element col-md-2">
-      <button arial-label="Edit Tournament" class="btn btn-success" (click)="editTournament()">
+      <button id="editTournamentButton" arial-label="Edit Tournament" class="btn btn-success" (click)="editTournament()">
         <i class="fa fa-pencil fa-lg"></i> Edit</button>
     </div>
     <div class="element col-md-2">
-      <button arial-label="Delete Tournament" class="btn btn-danger" (click)="deleteTournament()">
+      <button id="deleteTournamentButton" arial-label="Delete Tournament" class="btn btn-danger" (click)="deleteTournament()">
         <i class="fa fa-trash fa-lg"></i> Delete</button>
     </div>
   </div>
@@ -40,7 +40,7 @@
   <hr class="buffer">
 
   <h2>Match Creator</h2>
-  <div class="row buffer justify-content-center">
+  <div class="match-creator row buffer justify-content-center">
     <div class="element col-lg-4">
       <app-search-player #searchPlayer1></app-search-player>
     </div>
@@ -55,7 +55,7 @@
     </div>
   </div>
   <div class="row buffer justify-content-center">
-    <button arial-label="Add Match" class="btn btn-success" (click)="addMatch()">
+    <button id="addMatchButton" arial-label="Add Match" class="btn btn-success" (click)="addMatch()">
       <i class="fa fa-plus fa-lg"></i> Add Match</button>
   </div>
   <div *ngIf="matchCreationSuccess" class="alert alert-success">{{ matchCreationSuccess }}</div>

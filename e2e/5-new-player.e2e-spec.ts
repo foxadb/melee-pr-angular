@@ -7,10 +7,19 @@ describe('New Player Page:', () => {
         page = new NewPlayerPage();
     });
 
-    it('type player info', () => {
+    it('navigate to', () => {
         page.navigateTo();
+    });
+
+    it('type player name', () => {
         expect(page.typeName('Bobi')).toEqual('Bobi');
+    });
+
+    it('type player location', () => {
         expect(page.typeLocation('Lyon')).toEqual('Lyon');
+    });
+
+    it('type player score', () => {
         expect(page.typeScore(1500)).toEqual(1500);
     });
 

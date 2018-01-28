@@ -7,8 +7,11 @@ describe('Admin Page:', () => {
         page = new AdminPage();
     });
 
-    it('navigate to admin panel', () => {
+    it('navigate to', () => {
         page.navigateTo();
+    });
+
+    it('navigate to admin panel', () => {
         expect(page.getHeader()).toEqual('Hello admin');
     });
 

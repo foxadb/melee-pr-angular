@@ -8,28 +8,19 @@ export class NewPlayerPage {
 
     typeName(name: string): promise.Promise<string> {
         const inputField = element(by.css('form input[id=name]'));
-
-        inputField.clear();
         inputField.sendKeys(name);
-
         return inputField.getAttribute('value');
     }
 
     typeLocation(location: string): promise.Promise<string> {
         const inputField = element(by.css('form input[id=location]'));
-
-        inputField.clear();
         inputField.sendKeys(location);
-
         return inputField.getAttribute('value');
     }
 
     typeScore(score: number): promise.Promise<number> {
         const inputField = element(by.css('form input[id=score]'));
-
-        inputField.clear();
         inputField.sendKeys(score);
-
         return inputField.getAttribute('value').then(value => Number(value));
     }
 
@@ -40,7 +31,7 @@ export class NewPlayerPage {
         });
     }
 
-    submitPlayer() {
+    submitPlayer(): promise.Promise<boolean> {
         const submitButton = element(by.css('form button[type=submit]'));
         submitButton.click();
 
