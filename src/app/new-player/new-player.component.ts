@@ -63,7 +63,7 @@ export class NewPlayerComponent implements OnInit {
           if (res) {
             this.creationSuccess = 'Player created!';
 
-            // refresh the player list
+            // go back
             setTimeout(() => this.goBack(), 1000);
           } else {
             this.creationError = 'Error when creating player';

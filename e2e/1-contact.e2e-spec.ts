@@ -1,6 +1,6 @@
 import { ContactPage } from './contact.po';
 
-describe('Contact Page', () => {
+describe('Contact Page:', () => {
   let page: ContactPage;
 
   beforeEach(() => {

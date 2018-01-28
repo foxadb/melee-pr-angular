@@ -89,15 +89,19 @@ export class PlayerManagerComponent implements OnInit {
         this.playerUpdateSuccess = '';
         this.playerUpdateError = '';
 
+        console.log(res);
         if (res) {
           this.playerUpdateSuccess = 'Player updated!';
 
           // return to the general user panel
           setTimeout(() => this.goBack(), 1000);
         } else {
-          this.playerUpdateError = 'Error when updating the match';
+          this.playerUpdateError = 'Error when updating the player';
         }
-      });
+      },
+      // error: update denied by the server
+      err => this.playerUpdateError = 'Player not updated'
+    );
   }
 
   private deletePlayer(): void {
@@ -123,11 +127,12 @@ export class PlayerManagerComponent implements OnInit {
         // return to the general user panel
         setTimeout(() => this.goBack(), 1000);
       },
-      () => this.playerUpdateError = 'Player not deleted'
+      // error: update denied by the server
+      err => this.playerUpdateError = 'Player not deleted'
     );
   }
 
-  // Edit a Match
+  // Navigate throw match edition
   private editMatch(match: Match): void {
     const link = ['manager/match', match._id];
     this.router.navigate(link);

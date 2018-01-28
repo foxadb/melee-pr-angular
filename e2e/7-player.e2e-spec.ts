@@ -1,6 +1,6 @@
 import { PlayerPage } from './player.po';
 
-describe('Player details', () => {
+describe('Player Details Page:', () => {
     let page: PlayerPage;
 
     beforeEach(() => {
@@ -18,10 +18,6 @@ describe('Player details', () => {
 
     it('check player name', () => {
         expect(page.getPlayerName()).toEqual('Bobi');
-    });
-
-    it('click opponent', () => {
-        expect(page.clickOpponentButton()).toBeTruthy();
     });
 
 });

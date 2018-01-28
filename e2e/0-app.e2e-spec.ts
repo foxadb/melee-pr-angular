@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('App Root: Ranking Page', () => {
+describe('App Root:', () => {
   let page: AppPage;
 
   beforeEach(() => {
