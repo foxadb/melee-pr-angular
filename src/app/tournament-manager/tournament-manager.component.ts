@@ -149,8 +149,8 @@ export class TournamentManagerComponent implements OnInit {
 
     if (player1 && player2) {
       const newMatch = {
-        player1: player1,
-        player2: player2,
+        player1: player1._id,
+        player2: player2._id,
         score1: score1,
         score2: score2,
         tournament: this.tournament._id

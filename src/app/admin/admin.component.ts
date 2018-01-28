@@ -94,6 +94,10 @@ export class AdminComponent implements OnInit {
 
   // Delete the user
   private deleteUser(id: string): void {
+    // Reset the message box
+    this.successMessageBox = '';
+    this.errorMessageBox = '';
+
     this.confirmModal.open('Confirm you want to delete this user').then(
       () => {
         this.userService.deleteUser(id).subscribe(
