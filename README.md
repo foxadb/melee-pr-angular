@@ -67,5 +67,9 @@ The build artifacts will be stored in the `dist/` directory. Use the `-prod` fla
 ### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org).
+
 Selenium tests in direct connect mode require **Chrome** web browser.
-It is recommanded to run selenium tests on a test API server instance with an empty database: use `npm run test-server` on the Express API.
+
+It is recommanded to run selenium tests on a test API server instance with an empty database.
+
+You can use `npm run test-server` on the Express API to create an empty test server.
