@@ -21,12 +21,12 @@
   <div class="row justify-content-center top-buffer">
     <div class="col score-col">
       <input type="number" class="form-control" id="score1" aria-describedby="scorePlayer1" placeholder="{{ match?.score1 }}" min="-1"
-        name="score1" [(ngModel)]="matchInput.score1" #score1="ngModel" max=5>
+        name="score1" [(ngModel)]="matchInput.score1" #score1="ngModel" min="-1" max="9">
       <small id="score1Help" class="form-text text-muted">{{ match?.player1.name }} score was {{ match?.score1 }}</small>
     </div>
     <div class="col score-col">
       <input type="number" class="form-control" id="score2" aria-describedby="scorePlayer2" placeholder="{{ match?.score2 }}" min="-1"
-        name="score2" [(ngModel)]="matchInput.score2" #score2="ngModel" max=5>
+        name="score2" [(ngModel)]="matchInput.score2" #score2="ngModel" min="-1" max="9">
       <small id="score2Help" class="form-text text-muted">{{ match?.player2.name }} score was {{ match?.score2 }}</small>
     </div>
   </div>
@@ -44,5 +44,4 @@
   </div>
   <div *ngIf="matchUpdateError" class="alert alert-danger top-buffer">{{ matchUpdateError }}</div>
 </div>
-
 <app-confirm-modal></app-confirm-modal>

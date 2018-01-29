@@ -139,8 +139,8 @@ export class TournamentManagerComponent implements OnInit {
 
     const player1 = this.searchPlayer1.searchPlayer();
     const player2 = this.searchPlayer2.searchPlayer();
-    const score1 = (this.newMatchInput.score1 >= -1) ? this.newMatchInput.score1 : 0;
-    const score2 = (this.newMatchInput.score2 >= -1) ? this.newMatchInput.score2 : 0;
+    const score1 = this.newMatchInput.score1;
+    const score2 = this.newMatchInput.score2;
 
     if (player1 && player2) {
       const newMatch = {

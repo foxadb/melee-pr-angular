@@ -52,8 +52,8 @@ export class MatchManagerComponent implements OnInit {
     // create the updated match for PUT request
     const match = {
       _id: this.match._id,
-      score1: (this.matchInput.score1 >= -1) ? this.matchInput.score1 : 0,
-      score2: (this.matchInput.score2 >= -1) ? this.matchInput.score2 : 0,
+      score1: this.matchInput.score1,
+      score2: this.matchInput.score2
     };
 
     // update the match
