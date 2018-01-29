@@ -151,7 +151,7 @@ export class TournamentManagerComponent implements OnInit {
         },
         err => this.matchCreationError = 'Wrong parameters');
     } else {
-      this.matchCreationError = 'Missing players';
+      this.matchCreationError = 'Missing player(s)';
     }
   }
 

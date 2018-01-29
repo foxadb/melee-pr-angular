@@ -58,7 +58,8 @@
           <input id="password" type="password" class="form-control" placeholder="Enter a Password" name="password" [(ngModel)]="input.password"
             #password="ngModel" required>
         </div>
-        <div class="form-group">
+        <label for="radio-role">Role:</label>
+        <div id="radio-role" class="form-group">
           <label class="radio-inline">
             <input id="manager" type="radio" name="radio-role" value="manager" [(ngModel)]="input.role" #manager="ngModel">Manager</label>
           <label class="radio-inline">

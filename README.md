@@ -2,7 +2,7 @@
 
 ## Description
 
-Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular](https://angular.io) framework.
+Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular 5](https://angular.io) framework.
 
 ## Features
 
@@ -10,6 +10,7 @@ Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular](h
 
 - Look the power ranking
 - Search for specific player details (complete stats, matches results)
+- Search for specific tournament details
 
 #### For Manager
 
@@ -18,11 +19,14 @@ Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular](h
 - Edit player details
 - Edit match details
 - Edit tournament details
+- Delete a player
+- Delete a match
+- Delete a tournament
 
 #### For Admin
 
 - Add new user (manager/admin)
-- Delete existing user
+- Delete an existing user
 
 ## Instructions
 
@@ -62,6 +66,6 @@ The build artifacts will be stored in the `dist/` directory. Use the `-prod` fla
 
 ### Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org).
 Selenium tests in direct connect mode require **Chrome** web browser.
 It is recommanded to run selenium tests on a test API server instance with an empty database: use `npm run test-server` on the Express API.
