@@ -12,7 +12,7 @@ describe('New Match Page:', () => {
     });
 
     it('seach tournament', () => {
-        expect(page.searchTournament('G.R.A.S. #9')).toBeTruthy();
+        expect(page.searchTournament('GRAS 9')).toBeTruthy();
     });
 
     it('type player 1 name', () => {

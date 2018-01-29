@@ -12,7 +12,7 @@ describe('New Tournament Page:', () => {
     });
 
     it('type tournament name', () => {
-        expect(page.typeName('G.R.A.S. #9')).toEqual('G.R.A.S. #9');
+        expect(page.typeName('GRAS 9')).toEqual('GRAS 9');
     });
 
     it('type tournament date', () => {
