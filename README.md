@@ -34,14 +34,23 @@ Clone the back-end and run it
 git clone git@github.com:foxadb/melee-pr-express.git
 cd melee-pr-express
 npm install
-npm start
+```
+
+Run a production API server: `npm start`
+Run a test API server: `npm run test-server`
+
+### Install dependencies
+
+```
+cd melee-pr-angular
+npm install
 ```
 
 ### Development server
 
-Run `ng serve` for a dev server.
+Run `npm start` to launch a developpment server for the client part.
 
-Navigate to http://localhost:4200
+Navigate to http://localhost:4200 to access the client.
 
 The app will automatically reload if you change any of the source files.
 
@@ -58,4 +67,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Selenium tests require Chrome web browser.
+Selenium tests in direct connect mode require **Chrome** web browser.
+It is recommanded to run selenium tests on a test API server instance with an empty database: use `npm run test-server` on the Express API.

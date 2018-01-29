@@ -158,17 +158,14 @@ export class TournamentManagerComponent implements OnInit {
 
       this.matchService.createMatch(newMatch)
         .subscribe(res => {
-          if (res) {
-            this.matchCreationSuccess = 'Match added';
+          this.matchCreationSuccess = 'Match added';
 
-            // update the tournament data display
-            this.getTournament(this.tournament._id);
-          } else {
-            this.matchCreationError = 'Error when creating match';
-          }
-        });
+          // update the tournament data display
+          this.getTournament(this.tournament._id);
+        },
+        err => this.matchCreationError = 'Wrong parameters');
     } else {
-      this.matchCreationError = 'Wrong parameters';
+      this.matchCreationError = 'Missing players';
     }
   }
 

@@ -23,7 +23,7 @@
 
   <hr class="buffer">
 
-  <div class="row justify-content-center vdivide">
+  <div class="row justify-content-center">
     <div class="element col-md-8">
       <h2>User list</h2>
       <table class="table table-striped">
@@ -50,22 +50,22 @@
       <form class="form form-center" (ngSubmit)="createUser()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="name">Username:</label>
-          <input type="text" class="form-control" id="username" placeholder="Enter a Username" name="username" [(ngModel)]="input.username"
+          <input id="username" type="text" class="form-control" placeholder="Enter a Username" name="username" [(ngModel)]="input.username"
             #name="ngModel" required>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter a Password" name="password" [(ngModel)]="input.password"
+          <input id="password" type="password" class="form-control" placeholder="Enter a Password" name="password" [(ngModel)]="input.password"
             #password="ngModel" required>
         </div>
         <div class="form-group">
           <label class="radio-inline">
-            <input type="radio" name="radio-role" value="manager" [(ngModel)]="input.role" #manager="ngModel">Manager</label>
+            <input id="manager" type="radio" name="radio-role" value="manager" [(ngModel)]="input.role" #manager="ngModel">Manager</label>
           <label class="radio-inline">
-            <input type="radio" name="radio-role" value="admin" [(ngModel)]="input.role" #admin="ngModel">Admin</label>
+            <input id="admin" type="radio" name="radio-role" value="admin" [(ngModel)]="input.role" #admin="ngModel">Admin</label>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-success">
+          <button id="submitUser" type="submit" class="btn btn-success">
             <i class="fa fa-plus fa-lg"></i> Create User</button>
         </div>
       </form>

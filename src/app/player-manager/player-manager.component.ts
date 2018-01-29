@@ -89,7 +89,6 @@ export class PlayerManagerComponent implements OnInit {
         this.playerUpdateSuccess = '';
         this.playerUpdateError = '';
 
-        console.log(res);
         if (res) {
           this.playerUpdateSuccess = 'Player updated!';
 
