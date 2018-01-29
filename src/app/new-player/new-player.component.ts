@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PlayerService } from '../services/player.service';
@@ -19,7 +19,6 @@ export class NewPlayerComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private location: Location,
     private playerService: PlayerService
   ) { }
@@ -57,26 +56,28 @@ export class NewPlayerComponent implements OnInit {
     if (newPlayer) {
       this.playerService.createPlayer(newPlayer)
         .subscribe(res => {
-          this.creationSuccess = '';
+          this.creationSuccess = 'Player created!';
           this.creationError = '';
 
-          if (res) {
-            this.creationSuccess = 'Player created!';
-
-            // go back
-            setTimeout(() => this.goBack(), 1000);
-          } else {
-            this.creationError = 'Error when creating player';
-          }
-        });
+          // go back
+          setTimeout(() => this.goManager(), 1000);
+        },
+        err => this.creationError = 'Wrong player parameters'
+        );
     } else {
       this.creationError = 'Wrong player parameters';
     }
   }
 
-  // Return to manager panel
-  private goBack(): void {
+  // Go back to previous page
+  public goBack(): void {
     this.location.back();
+  }
+
+  // Return to manager panel
+  public goManager(): void {
+    const link = ['manager'];
+    this.router.navigate(link);
   }
 
 }

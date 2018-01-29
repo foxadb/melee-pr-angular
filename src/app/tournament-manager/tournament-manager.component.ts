@@ -76,11 +76,6 @@ export class TournamentManagerComponent implements OnInit {
     });
   }
 
-  private goBack(): void {
-    // return to the general user panel
-    this.location.back();
-  }
-
   private editTournament(): void {
     // create the updated tournament for PUT request
     const tournament = {
@@ -101,8 +96,8 @@ export class TournamentManagerComponent implements OnInit {
         if (res) {
           this.tournamentUpdateSuccess = 'Tournament updated!';
 
-          // return to the general user panel
-          setTimeout(() => this.goBack(), 1000);
+          // return to the manager panel
+          setTimeout(() => this.goManager(), 1000);
         } else {
           this.tournamentUpdateError = 'Error when updating the tournament';
         }
@@ -123,14 +118,14 @@ export class TournamentManagerComponent implements OnInit {
               this.tournamentUpdateSuccess = 'Tournament deleted!';
 
               // return to the general user panel
-              setTimeout(() => this.goBack(), 1000);
+              setTimeout(() => this.goManager(), 1000);
             } else {
               this.tournamentUpdateError = 'Error when deleting the tournament';
             }
           });
 
-        // return to the general user panel
-        setTimeout(() => this.goBack(), 1000);
+        // return to the manager panel
+        setTimeout(() => this.goManager(), 1000);
       },
       () => this.tournamentUpdateError = 'Tournament not deleted'
     );
@@ -172,6 +167,18 @@ export class TournamentManagerComponent implements OnInit {
   // Edit a Match
   private editMatch(match: Match): void {
     const link = ['manager/match', match._id];
+    this.router.navigate(link);
+  }
+
+
+  // Go back to previous page
+  public goBack(): void {
+    this.location.back();
+  }
+
+  // Return to manager panel
+  public goManager(): void {
+    const link = ['manager'];
     this.router.navigate(link);
   }
 

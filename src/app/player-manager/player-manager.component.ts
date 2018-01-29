@@ -63,11 +63,6 @@ export class PlayerManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private goBack(): void {
-    // return to the general user panel
-    this.location.back();
-  }
-
   private receiveCharacterMessage(characters: Array<string>): void {
     this.playerInput.mains = characters;
   }
@@ -92,15 +87,15 @@ export class PlayerManagerComponent implements OnInit {
         if (res) {
           this.playerUpdateSuccess = 'Player updated!';
 
-          // return to the general user panel
-          setTimeout(() => this.goBack(), 1000);
+          // return to the manager panel
+          setTimeout(() => this.goManager(), 1000);
         } else {
           this.playerUpdateError = 'Error when updating the player';
         }
       },
       // error: update denied by the server
       err => this.playerUpdateError = 'Player not updated'
-    );
+      );
   }
 
   private deletePlayer(): void {
@@ -116,15 +111,15 @@ export class PlayerManagerComponent implements OnInit {
             if (res) {
               this.playerUpdateSuccess = 'Player deleted!';
 
-              // return to the general user panel
-              setTimeout(() => this.goBack(), 1000);
+              // return to the manager panel
+              setTimeout(() => this.goManager(), 1000);
             } else {
               this.playerUpdateError = 'Error when deleting the match';
             }
           });
 
-        // return to the general user panel
-        setTimeout(() => this.goBack(), 1000);
+        // return to the manager panel
+        setTimeout(() => this.goManager(), 1000);
       },
       // error: update denied by the server
       err => this.playerUpdateError = 'Player not deleted'
@@ -134,6 +129,17 @@ export class PlayerManagerComponent implements OnInit {
   // Navigate throw match edition
   private editMatch(match: Match): void {
     const link = ['manager/match', match._id];
+    this.router.navigate(link);
+  }
+
+  // Go back to previous page
+  public goBack(): void {
+    this.location.back();
+  }
+
+  // Return to manager panel
+  public goManager(): void {
+    const link = ['manager'];
     this.router.navigate(link);
   }
 

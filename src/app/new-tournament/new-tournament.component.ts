@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TournamentService } from '../services/tournament.service';
@@ -19,7 +19,6 @@ export class NewTournamentComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private location: Location,
     private tournamentService: TournamentService
   ) { }
@@ -53,25 +52,29 @@ export class NewTournamentComponent implements OnInit {
     if (newTournament) {
       this.tournamentService.createTournament(newTournament)
         .subscribe(res => {
-          this.creationSuccess = '';
+          this.creationSuccess = 'Tournament created!';
           this.creationError = '';
-          if (res) {
-            this.creationSuccess = 'Tournament created!';
 
-            // refresh the tournament list
-            setTimeout(() => this.goBack(), 1000);
-          } else {
-            this.creationError = 'Error when creating tournament';
-          }
-        });
+          // refresh the tournament list
+          setTimeout(() => this.goManager(), 1000);
+        },
+        err => this.creationError = 'Wrong tournament parameters'
+        );
     } else {
       this.creationError = 'Wrong tournament parameters';
     }
   }
 
-  // Return to manager panel
+
+  // Go back to previous page
   public goBack(): void {
     this.location.back();
+  }
+
+  // Return to manager panel
+  public goManager(): void {
+    const link = ['manager'];
+    this.router.navigate(link);
   }
 
 }
