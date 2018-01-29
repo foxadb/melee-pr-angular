@@ -12,10 +12,10 @@ import { TournamentService } from '../services/tournament.service';
 export class NewTournamentComponent implements OnInit {
 
   // User input
-  private input: any = {};
+  public input: any = {};
 
-  private creationSuccess = '';
-  private creationError = '';
+  public creationSuccess = '';
+  public creationError = '';
 
   constructor(
     private router: Router,

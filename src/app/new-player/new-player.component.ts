@@ -12,10 +12,10 @@ import { PlayerService } from '../services/player.service';
 export class NewPlayerComponent implements OnInit {
 
   // User input
-  private input: any = {};
+  public input: any = {};
 
-  private creationSuccess = '';
-  private creationError = '';
+  public creationSuccess = '';
+  public creationError = '';
 
   constructor(
     private router: Router,
@@ -25,12 +25,12 @@ export class NewPlayerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private receiveCharacterMessage(characters: Array<string>): void {
+  public receiveCharacterMessage(characters: Array<string>): void {
     this.input.mains = characters;
   }
 
   // Collect user input to create the player body parameter for creation
-  private newPlayer(): any {
+  public newPlayer(): any {
     const name = this.input.name;
     const location = this.input.location;
     const score = (this.input.score != null) ? this.input.score : 1500;
@@ -51,7 +51,7 @@ export class NewPlayerComponent implements OnInit {
   }
 
   // Create the player
-  private createPlayer(): void {
+  public createPlayer(): void {
     const newPlayer = this.newPlayer();
     if (newPlayer) {
       this.playerService.createPlayer(newPlayer)

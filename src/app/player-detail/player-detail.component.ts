@@ -16,11 +16,11 @@ import { MatchService } from '../services/match.service';
 })
 export class PlayerDetailComponent implements OnInit {
 
-  private player: Player;
-  private matches: Array<Match> = [];
+  public player: Player;
+  public matches: Array<Match> = [];
 
-  private nbMatches = 0;
-  private ratio: any = 0;
+  public nbMatches = 0;
+  public ratio: any = 0;
 
   constructor(
     private router: Router,

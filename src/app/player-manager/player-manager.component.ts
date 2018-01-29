@@ -18,18 +18,18 @@ import { MatchService } from '../services/match.service';
 })
 export class PlayerManagerComponent implements OnInit {
 
-  private player: Player;
-  private matches: Array<Match> = [];
-  private mains: Array<string>;
+  public player: Player;
+  public matches: Array<Match> = [];
+  public mains: Array<string>;
 
-  private playerInput: any = {};
+  public playerInput: any = {};
 
-  private nbMatches: number;
+  public nbMatches: number;
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
-  private playerUpdateSuccess = '';
-  private playerUpdateError = '';
+  public playerUpdateSuccess = '';
+  public playerUpdateError = '';
 
   constructor(
     private router: Router,
@@ -63,11 +63,11 @@ export class PlayerManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private receiveCharacterMessage(characters: Array<string>): void {
+  public receiveCharacterMessage(characters: Array<string>): void {
     this.playerInput.mains = characters;
   }
 
-  private editPlayer(): void {
+  public editPlayer(): void {
     // create the updated player for PUT request
     const player = {
       _id: this.player._id,
@@ -98,7 +98,7 @@ export class PlayerManagerComponent implements OnInit {
       );
   }
 
-  private deletePlayer(): void {
+  public deletePlayer(): void {
     this.confirmModal.open('Confirm you want to delete ' + this.player.name).then(
       () => {
         // delete the player from database
@@ -127,7 +127,7 @@ export class PlayerManagerComponent implements OnInit {
   }
 
   // Navigate throw match edition
-  private editMatch(match: Match): void {
+  public editMatch(match: Match): void {
     const link = ['manager/match', match._id];
     this.router.navigate(link);
   }

@@ -25,7 +25,7 @@ export class CharacterRosterComponent implements OnInit {
     }
   }
 
-  private addMain(character: string): void {
+  public addMain(character: string): void {
     // search if main already exist
     const index = this.mains.indexOf(character, 0);
 
@@ -38,7 +38,7 @@ export class CharacterRosterComponent implements OnInit {
     }
   }
 
-  private removeMain(character: string): void {
+  public removeMain(character: string): void {
     // find the character
     const index = this.mains.indexOf(character, 0);
 

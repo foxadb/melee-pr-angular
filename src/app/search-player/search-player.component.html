@@ -3,7 +3,7 @@
 </ng-template>
 
 <div class="container">
-  <form class="form" (ngSubmit)="searchPlayer(player.name)">
+  <form class="form" (ngSubmit)="searchPlayer()">
     <div class="row input-group">
       <input type="text" class="form-control" placeholder="Enter a Player Name" name="name" [(ngModel)]="player" [ngbTypeahead]="search"
         [resultTemplate]="rt" [inputFormatter]="formatter">

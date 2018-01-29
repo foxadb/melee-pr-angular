@@ -18,10 +18,10 @@ import { MatchService } from '../services/match.service';
 })
 export class TournamentDetailComponent implements OnInit {
 
-  private tournament: Tournament;
-  private matches: Array<Match> = [];
+  public tournament: Tournament;
+  public matches: Array<Match> = [];
 
-  private nbMatches = 0;
+  public nbMatches = 0;
 
   constructor(
     private route: ActivatedRoute,

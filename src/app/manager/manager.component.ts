@@ -23,36 +23,36 @@ import { TournamentService } from '../services/tournament.service';
 export class ManagerComponent implements OnInit {
 
   // Username and role logged in
-  private username: string;
-  private role: string;
+  public username: string;
+  public role: string;
 
   // Form attributes
-  private matchInput: any = {};
+  public matchInput: any = {};
 
   // Players list
-  private players: Array<Player> = [];
+  public players: Array<Player> = [];
 
   // Tournaments list
-  private tournaments: Array<Tournament> = [];
+  public tournaments: Array<Tournament> = [];
 
   // Filtered players list for autocompletion
-  private filteredPlayers: Observable<Player[]>;
+  public filteredPlayers: Observable<Player[]>;
 
   // Player research input controller
-  private searchPlayerCtrl: FormControl = new FormControl();
+  public searchPlayerCtrl: FormControl = new FormControl();
 
   // Searched player in text input
-  private searchedPlayerName: string;
+  public searchedPlayerName: string;
 
-  private loading = false;
+  public loading = false;
 
   // True if the player searched is found, false otherwise
-  private player: Player;
-  private playerMatches: Array<Match>;
+  public player: Player;
+  public playerMatches: Array<Match>;
 
-  private playerNotFoundError = '';
-  private matchCreationSuccess = '';
-  private matchCreationError = '';
+  public playerNotFoundError = '';
+  public matchCreationSuccess = '';
+  public matchCreationError = '';
 
   constructor(
     private router: Router,
@@ -85,12 +85,12 @@ export class ManagerComponent implements OnInit {
     );
   }
 
-  private receivePlayerMessage(player: Player): void {
+  public receivePlayerMessage(player: Player): void {
     const link = ['manager/player', player._id];
     this.router.navigate(link);
   }
 
-  private receiveTournamentMessage(tournament: Tournament): void {
+  public receiveTournamentMessage(tournament: Tournament): void {
     const link = ['manager/tournament', tournament._id];
     this.router.navigate(link);
   }

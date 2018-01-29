@@ -18,13 +18,13 @@ import { MatchService } from '../services/match.service';
 })
 export class MatchManagerComponent implements OnInit {
 
-  private match: Match;
+  public match: Match;
 
-  private matchInput: any = {};
+  public matchInput: any = {};
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
-  private matchUpdateError = '';
+  public matchUpdateError = '';
 
   constructor(
     private router: Router,

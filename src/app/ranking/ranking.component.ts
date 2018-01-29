@@ -15,7 +15,7 @@ import { PlayerService } from '../services/player.service';
 export class RankingComponent implements OnInit {
 
   // Players list
-  private players: Array<Player> = [];
+  public players: Array<Player> = [];
 
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class RankingComponent implements OnInit {
 
   public ngOnInit(): void {}
 
-  private receivePlayerMessage(player: Player): void {
+  public receivePlayerMessage(player: Player): void {
     const link = ['player', player._id];
     this.router.navigate(link);
   }

@@ -10,9 +10,9 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  private model: any = {};
-  private loading = false;
-  private error = '';
+  public model: any = {};
+  public loading = false;
+  public error = '';
 
   constructor(private auth: AuthenticationService, private router: Router) { }
 

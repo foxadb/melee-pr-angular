@@ -20,26 +20,26 @@ import { SearchPlayerComponent } from '../search-player/search-player.component'
 })
 export class TournamentManagerComponent implements OnInit {
 
-  private tournament: Tournament;
-  private matches: Array<Match> = [];
-  private nbMatches: number;
+  public tournament: Tournament;
+  public matches: Array<Match> = [];
+  public nbMatches: number;
 
   // Editing the Tournament
-  private tournamentInput: any = {};
+  public tournamentInput: any = {};
 
   // Adding a New Match
-  private newMatchInput: any = {};
+  public newMatchInput: any = {};
 
   @ViewChild('searchPlayer1') searchPlayer1: SearchPlayerComponent;
   @ViewChild('searchPlayer2') searchPlayer2: SearchPlayerComponent;
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
-  private tournamentUpdateSuccess = '';
-  private tournamentUpdateError = '';
+  public tournamentUpdateSuccess = '';
+  public tournamentUpdateError = '';
 
-  private matchCreationSuccess = '';
-  private matchCreationError = '';
+  public matchCreationSuccess = '';
+  public matchCreationError = '';
 
   constructor(
     private router: Router,
@@ -55,7 +55,7 @@ export class TournamentManagerComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private getTournament(id: string) {
+  public getTournament(id: string) {
     this.tournamentService.getTournament(id).subscribe(tournament => {
       this.tournament = tournament;
 
@@ -76,7 +76,7 @@ export class TournamentManagerComponent implements OnInit {
     });
   }
 
-  private editTournament(): void {
+  public editTournament(): void {
     // create the updated tournament for PUT request
     const tournament = {
       _id: this.tournament._id,
@@ -90,40 +90,31 @@ export class TournamentManagerComponent implements OnInit {
     this.tournamentService.updateTournament(tournament)
       .subscribe(res => {
         // reset message boxes
-        this.tournamentUpdateSuccess = '';
+        this.tournamentUpdateSuccess = 'Tournament updated!';
         this.tournamentUpdateError = '';
 
-        if (res) {
-          this.tournamentUpdateSuccess = 'Tournament updated!';
-
-          // return to the manager panel
-          setTimeout(() => this.goManager(), 1000);
-        } else {
-          this.tournamentUpdateError = 'Error when updating the tournament';
-        }
-      });
+        // return to the manager panel
+        setTimeout(() => this.goManager(), 1000);
+      },
+      err => this.tournamentUpdateError = 'Error when updating the tournament'
+      );
   }
 
-  private deleteTournament(): void {
+  public deleteTournament(): void {
     this.confirmModal.open('Confirm you want to delete ' + this.tournament.name).then(
       () => {
         // delete the player from database
         this.tournamentService.deleteTournament(this.tournament._id)
           .subscribe(res => {
             // reset message boxes
-            this.tournamentUpdateSuccess = '';
+            this.tournamentUpdateSuccess = 'Tournament deleted!';
             this.tournamentUpdateError = '';
 
-            if (res) {
-              this.tournamentUpdateSuccess = 'Tournament deleted!';
-
-              // return to the general user panel
-              setTimeout(() => this.goManager(), 1000);
-            } else {
-              this.tournamentUpdateError = 'Error when deleting the tournament';
-            }
-          });
-
+            // return to the general user panel
+            setTimeout(() => this.goManager(), 1000);
+          },
+          () => this.tournamentUpdateError = 'Error when deleting the tournament'
+          );
         // return to the manager panel
         setTimeout(() => this.goManager(), 1000);
       },
@@ -132,7 +123,7 @@ export class TournamentManagerComponent implements OnInit {
 
   }
 
-  private addMatch(): void {
+  public addMatch(): void {
     // reset status boxes
     this.matchCreationSuccess = '';
     this.matchCreationError = '';
@@ -165,7 +156,7 @@ export class TournamentManagerComponent implements OnInit {
   }
 
   // Edit a Match
-  private editMatch(match: Match): void {
+  public editMatch(match: Match): void {
     const link = ['manager/match', match._id];
     this.router.navigate(link);
   }

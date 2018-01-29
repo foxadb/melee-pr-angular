@@ -21,19 +21,19 @@ import { MatchService } from '../services/match.service';
 export class SearchPlayerComponent implements OnInit {
 
   // Player list
-  private players: Array<Player>;
+  public players: Array<Player>;
 
   // Player User Input
-  private player: any;
+  public player: any;
 
   // Send the player id to parent component
   @Output() playerMessageEvent = new EventEmitter<Player>();
 
   // Loading animation
-  private loading = false;
+  public loading = false;
 
   // Error message box
-  private error = '';
+  public error = '';
 
   search = (text: Observable<string>) =>
     text

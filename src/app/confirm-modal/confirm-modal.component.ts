@@ -15,7 +15,7 @@ export class ConfirmModalComponent implements OnInit {
   @Input() confirmationMessage: string;
 
   // Modal message body
-  private modalBody: string;
+  public modalBody: string;
 
   constructor(private modalService: NgbModal) { }
 
@@ -38,7 +38,7 @@ export class ConfirmModalComponent implements OnInit {
     return promise;
   }
 
-  private getDismissReason(reason: any): string {
+  public getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {

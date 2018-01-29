@@ -15,18 +15,16 @@ import User from '../models/user.model';
 })
 export class AdminComponent implements OnInit {
 
-  private username: string;
-
-  private users: Array<User> = [];
-
-  private input: any = {};
+  public username: string;
+  public users: Array<User> = [];
+  public input: any = {};
 
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
-  private confirm = false;
+  public confirm = false;
 
-  private successMessageBox: string;
-  private errorMessageBox: string;
+  public successMessageBox: string;
+  public errorMessageBox: string;
 
   constructor(
     private router: Router,
@@ -42,7 +40,7 @@ export class AdminComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  private getUsers(): void {
+  public getUsers(): void {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
@@ -93,7 +91,7 @@ export class AdminComponent implements OnInit {
   }
 
   // Delete the user
-  private deleteUser(id: string): void {
+  public deleteUser(id: string): void {
     // Reset the message box
     this.successMessageBox = '';
     this.errorMessageBox = '';
@@ -117,17 +115,17 @@ export class AdminComponent implements OnInit {
   }
 
   // Go to home (ranking)
-  private goHome(): void {
+  public goHome(): void {
     this.router.navigate(['']);
   }
 
   // Go to Manager Panel
-  private goManager(): void {
+  public goManager(): void {
     this.router.navigate(['manager']);
   }
 
   // Log out
-  private logout(): void {
+  public logout(): void {
     // Sign out from the app
     this.auth.logout();
 
