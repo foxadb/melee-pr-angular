@@ -29,7 +29,7 @@ export class TournamentService {
     return options;
   }
 
-  // Get Tournamentes from API
+  // Get Tournaments from API
   public getTournaments(): Observable<Array<Tournament>> {
     return this.http.get(this.tournamentUrl)
       .map(res => {
@@ -72,6 +72,15 @@ export class TournamentService {
   // Delete a Tournament from API
   public deleteTournament(id: any): Observable<boolean> {
     return this.http.delete(`${this.tournamentUrl}/${id}`, this.options())
+      .map(res => {
+        return true;
+      })
+      .catch(err => this.handleError(err));
+  }
+
+  // Update Ranking with tournament results
+  public updateRanking(body: any): Observable<boolean> {
+  return this.http.put(`${this.tournamentUrl}/ranking`, body, this.options())
       .map(res => {
         return true;
       })

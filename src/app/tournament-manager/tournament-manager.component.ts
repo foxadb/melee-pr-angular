@@ -161,6 +161,24 @@ export class TournamentManagerComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  // Update Ranking
+  public updateRanking(): void {
+    const body = {
+      _id: this.tournament._id
+    };
+
+    this.tournamentService.updateRanking(body)
+      .subscribe(res => {
+        // reset message boxes
+        this.tournamentUpdateSuccess = 'Ranking updated !';
+        this.tournamentUpdateError = '';
+
+        // return to the general user panel
+        setTimeout(() => this.goManager(), 1000);
+      },
+      () => this.tournamentUpdateError = 'Error when updating ranking'
+      );
+  }
 
   // Go back to previous page
   public goBack(): void {
