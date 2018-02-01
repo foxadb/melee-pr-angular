@@ -6,18 +6,18 @@ export class ContactPage {
         return browser.get('contact');
     }
 
-    authorName(index: number): promise.Promise<string> {
-        const name = element.all(by.css('a.name')).get(index);
+    authorName(): promise.Promise<string> {
+        const name = element(by.css('a.name'));
         return name.getText();
     }
 
-    authorDescription(index: number): promise.Promise<string> {
-        const description = element.all(by.css('a.location')).get(index);
+    authorDescription(): promise.Promise<string> {
+        const description = element(by.css('a.location'));
         return description.getText();
     }
 
-    authorEmail(index: number): promise.Promise<string> {
-        const email = element.all(by.css('a.email')).get(index);
+    authorEmail(): promise.Promise<string> {
+        const email = element(by.css('a.email'));
         return email.getText();
     }
 
