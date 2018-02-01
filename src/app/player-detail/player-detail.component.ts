@@ -48,6 +48,10 @@ export class PlayerDetailComponent implements OnInit {
           },
           error => console.log('Error: ', error),
           () => {
+            // Sort match by tournament date
+            this.matches.sort((a, b) =>
+              new Date(b.tournament.date).getTime() - new Date(a.tournament.date).getTime());
+
             // Number of matches
             this.nbMatches = this.matches.length;
 
