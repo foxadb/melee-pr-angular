@@ -9,11 +9,12 @@ import { AuthenticationService } from './authentication.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class MatchService {
 
-  private api_url = 'http://localhost:3000';
-  private matchUrl = `${this.api_url}/api/match`;
+  private matchUrl = `${environment.apiUrl}/match`;
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 

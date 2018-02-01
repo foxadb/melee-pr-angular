@@ -8,11 +8,12 @@ import 'rxjs/add/operator/map';
 import { AuthenticationService } from './authentication.service';
 import User from '../models/user.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class UserService {
 
-  private api_url = 'http://localhost:3000';
-  private userUrl = `${this.api_url}/api/user`;
+  private userUrl = `${environment.apiUrl}/user`;
 
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 

@@ -9,11 +9,12 @@ import { AuthenticationService } from './authentication.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class PlayerService {
 
-  private api_url = 'http://localhost:3000';
-  private playerUrl = `${this.api_url}/api/player`;
+  private playerUrl = `${environment.apiUrl}/player`;
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
