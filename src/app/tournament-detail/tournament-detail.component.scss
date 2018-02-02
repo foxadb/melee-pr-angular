@@ -1,19 +1,11 @@
 .container {
-    padding-bottom: 50px;
+    max-width: 786px;
 }
 
-table {
-    margin: auto;
+.table-x-scroll {
+    overflow-x: auto;
 }
 
 table th, td {
     text-align: center;
-}
-
-table .player1 {
-    text-align: left;
-}
-
-table .player2 {
-    text-align: right;
 }

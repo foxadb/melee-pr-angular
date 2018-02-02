@@ -1,11 +1,11 @@
-table th, td {
-    text-align: center;
+.container {
+    max-width: 786px;
 }
 
-.character {
-    height: 400px;
-    width: 400px;
-    display: block;
-    margin: auto;
-    border-radius: 50%;
+.table-x-scroll {
+    overflow-x: auto;
+}
+
+table th, td {
+    text-align: center;
 }

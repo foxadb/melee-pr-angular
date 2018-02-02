@@ -15,12 +15,8 @@ table th, td {
     text-align: center;
 }
 
-table .player1 {
-    text-align: left;
-}
-
-table .player2 {
-    text-align: right;
+.table-x-scroll {
+    overflow-x: auto;
 }
 
 .match-table tbody tr:hover {

@@ -15,7 +15,7 @@
       <input class="form-control" type="number" placeholder="{{ player?.score }}" [(ngModel)]="playerInput.score">
     </div>
   </div>
-  
+
   <app-character-roster [mains]="mains" (characterMessageEvent)="receiveCharacterMessage($event)"></app-character-roster>
 
   <hr class="buffer">
@@ -39,8 +39,9 @@
   <div *ngIf="playerUpdateError" class="alert alert-danger buffer">{{ playerUpdateError }}</div>
 
   <hr class="buffer">
-  
-  <table class="table table-striped match-table buffer">
+
+  <div class="table-x-scroll">
+    <table class="table table-striped match-table buffer">
       <thead>
         <tr>
           <th>Opponent</th>
@@ -62,6 +63,6 @@
         </tr>
       </tbody>
     </table>
+  </div>
 </div>
-
 <app-confirm-modal></app-confirm-modal>

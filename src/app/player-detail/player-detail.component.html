@@ -1,56 +1,57 @@
 <div class="container">
   <h1>{{ player?.name }}</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Main(s)</th>
-        <th>Location</th>
-        <th>Matches</th>
-        <th>W/L</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <div class="stock" *ngFor="let character of player?.mains">
-            <img src="assets/stock_icons/{{ character }}.png">
-          </div>
-        </td>
-        <td>{{ player?.location }}</td>
-        <td>{{ nbMatches }}</td>
-        <td>{{ ratio }}</td>
-        <td>{{ player?.score }}</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <div class="table-x-scroll">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Main(s)</th>
+          <th>Location</th>
+          <th>Matches</th>
+          <th>W/L</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="stock" *ngFor="let character of player?.mains">
+              <img src="assets/stock_icons/{{ character }}.png">
+            </div>
+          </td>
+          <td>{{ player?.location }}</td>
+          <td>{{ nbMatches }}</td>
+          <td>{{ ratio }}</td>
+          <td>{{ player?.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <h2>Match Results</h2>
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Opponent</th>
-        <th>Main(s)</th>
-        <th>Score</th>
-        <th>Tournament</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let match of matches">
-        <td>
-          <button class="btn btn-primary" (click)="searchPlayer(match.player2._id)">{{ match.player2.name }}</button>
-        <td>
-          <div class='stock' *ngFor="let character of match.player2.mains">
-            <img src="assets/stock_icons/{{ character }}.png" />
-          </div>
-        </td>
-        <td>{{ match.score1 }} : {{ match.score2 }}</td>
-        <td>
-          <button class="btn btn-primary" (click)="searchTournament(match.tournament._id)">{{ match.tournament.name }}</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-x-scroll">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Opponent</th>
+          <th>Main(s)</th>
+          <th>Score</th>
+          <th>Tournament</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let match of matches">
+          <td>
+            <button class="btn btn-primary" (click)="searchPlayer(match.player2._id)">{{ match.player2.name }}</button>
+            <td>
+              <div class='stock' *ngFor="let character of match.player2.mains">
+                <img src="assets/stock_icons/{{ character }}.png" />
+              </div>
+            </td>
+            <td>{{ match.score1 }} : {{ match.score2 }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="searchTournament(match.tournament._id)">{{ match.tournament.name }}</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
