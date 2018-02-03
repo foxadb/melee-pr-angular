@@ -21,4 +21,9 @@ export class ContactPage {
         return email.getText();
     }
 
+    authorGithub(): promise.Promise<string> {
+        const email = element(by.css('a.github'));
+        return email.getText();
+    }
+
 }

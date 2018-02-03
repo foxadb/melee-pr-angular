@@ -23,4 +23,8 @@ describe('Contact Page:', () => {
     expect(page.authorEmail()).toEqual('sametzy[at]gmail[dot]com');
   });
 
+  it('check author github', () => {
+    expect(page.authorGithub()).toEqual('github.com/foxadb');
+  });
+
 });
