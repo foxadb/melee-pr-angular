@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { NgbTypeaheadModule, NgbTypeaheadConfig, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -62,8 +61,6 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatInputModule,
     NgbTypeaheadModule,
     AppRoutingModule,
     NgbModule.forRoot()
