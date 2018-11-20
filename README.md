@@ -4,8 +4,6 @@
 
 Super Smash Bros. Melee Power Ranking front-end webapp designed with [Angular 5](https://angular.io) framework.
 
-An online preview is available here: [Grenoble Melee Ranking](https://www.grenoble-melee-ranking.com)
-
 ## Features
 
 #### For Guest
